@@ -2,13 +2,14 @@
 
 > Beauty is what remains after everything that does not work is gone.  
 > Function first. Then subtract. The subtraction is the beauty.  
-> One bold move, purely cut, until it looks like it was always there.  
-> From the street, monotonous. The essence is inside.
+> One bold move, purely cut, until it looks like it was always there.
 
 **For:** Axiom — decision systems for cities, governments, and operators. `axiom.nonarkara.org`  
-**Use:** Throw this repo at any agent — slide-maker, infographic-maker, dashboard-builder, document-writer. Everything an agent needs to produce correct Axiom design.  
+**Use:** Throw this repo at any agent — slide-maker, infographic-maker, dashboard-builder, document-writer. Everything needed to produce correct Axiom design.  
 **Version:** 2.0 — The Living Edition  
 **Lineage:** Rams · Moggridge · Norman · MoMA Digital · Maeda · Vignelli/NYCTA · Sullivan · Wright · Kahn · Koolhaas · Murcutt · Bawa · Ongard · Sato · Hemingway · Bukowski · Kant
+
+![Axiom Design Core — system overview](assets/photos/axiom-concept-01.png)
 
 ---
 
@@ -36,6 +37,8 @@ Pick by the human's **act**, not by taste.
 | **Density** | maximum | reading measure 60–72ch | generous, hand-scale |
 
 When unsure: **Instrument is the default.** It is the most disciplined and the hardest to cheat.
+
+![01 — The Three Modes: one spine, three registers, choose by the human act](assets/photos/axiom-concept-02.png)
 
 ---
 
@@ -100,6 +103,40 @@ None of these?                        → no color. Grey + size.
 ```
 
 If you add color "to liven it up," you have failed every master. Delete it.
+
+![02 — Color & Typography: the grammar of clarity](assets/photos/axiom-concept-03.png)
+
+---
+
+## The Mark & Wayfinding
+
+Identity should be obvious at a glance. The Axiom mark, the disc subsystem, the station plate, the directional triangle — all governed by one question: does the form explain the function instantly?
+
+![04 — The Mark & Wayfinding: identity, disc subsystem, station plate, decision tree](assets/photos/axiom-concept-05.png)
+
+---
+
+## Grid, Proportion & MoMA Law
+
+Every edge resolves to another edge. The grid is invisible because everything snaps to it. The Golden Section (φ = 1.618) lives in every split, every margin, every composition. Never 50/50.
+
+![03 — Grid, Proportion & MoMA Law: how the layout holds together](assets/photos/axiom-concept-04.png)
+
+---
+
+## Interaction & The Lined Glass
+
+State should be understood instantly. Every surface graduates its own state. The cockpit pattern: vital signs always visible, fewest instruments to operate safely.
+
+![05 — Interaction & The Lined Glass: state, Norman's Seven Principles, the 100ms rule](assets/photos/axiom-concept-06.png)
+
+---
+
+## The Divine Move
+
+Exactly one bold gesture per surface — the one the function already demanded, executed full-size in pure form until it looks inevitable.
+
+![06 — The Divine Move: definition, rules, examples](assets/photos/axiom-concept-07.png)
 
 ---
 
@@ -171,6 +208,8 @@ When generating any Axiom artifact:
 4. Use components from `components.html` as reference — do not invent variants.
 5. Run the checklist above before declaring done.
 6. One Divine Move per surface. Trace it to a function or delete it.
+
+![07 — Build Workflow & Shipping Checklist: from idea to working system](assets/photos/axiom-concept-08.png)
 
 ---
 
