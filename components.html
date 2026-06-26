@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom — Component Gallery</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    body { padding: 44px var(--outer-pad); max-width: 1100px; margin: 0 auto; }
+
+    /* Gallery scaffolding */
+    .g-section { margin-bottom: 64px; }
+    .g-label {
+      font-size: var(--t-micro); font-weight: 700; letter-spacing: 0.20em;
+      text-transform: uppercase; color: var(--ink-3);
+      border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 22px;
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .g-label span { font-weight: 500; letter-spacing: 0; color: var(--ink-3); font-size: 10px; text-transform: none; }
+    .g-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start; }
+    .g-col { min-width: 240px; flex: 1; }
+    .g-note {
+      font-size: 10px; color: var(--ink-3); margin-top: 10px; font-style: italic;
+      padding-top: 8px; border-top: 1px solid var(--line);
+    }
+
+    /* Code snippets */
+    pre {
+      background: var(--panel); border: 1px solid var(--line);
+      padding: 13px 16px; font-family: var(--font-mono); font-size: 10px;
+      line-height: 1.6; overflow-x: auto; margin: 0;
+    }
+
+    /* Masthead */
+    .masthead {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 22px; margin-bottom: 44px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .masthead__title { font-size: 22px; font-weight: 600; }
+    .masthead__meta { font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+  </style>
+</head>
+<body>
+
+<div class="masthead">
+  <div>
+    <div class="masthead__meta">Axiom Design Core v2.0</div>
+    <div class="masthead__title">Component Gallery</div>
+  </div>
+  <div style="font-size:10px;color:var(--ink-3);text-align:right;line-height:1.8;">
+    Instrument mode<br>
+    Reference: AXIOM-DNA.md §10
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §1 COLORS
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§5 Color System <span>DNA §5 · The two-color law</span></div>
+  <div class="g-row">
+
+    <div class="g-col">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
+        <div style="background:var(--paper);padding:13px 11px;">
+          <div class="stat-lbl">PAPER</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);">#f6f5f2</div>
+        </div>
+        <div style="background:var(--panel);padding:13px 11px;border:1px solid var(--line-2);">
+          <div class="stat-lbl">PANEL</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);">#ffffff</div>
+        </div>
+        <div style="background:var(--ink);padding:13px 11px;">
+          <div class="stat-lbl" style="color:var(--line);">INK</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:var(--line);">#191712</div>
+        </div>
+        <div style="background:var(--blue);padding:13px 11px;">
+          <div class="stat-lbl" style="color:rgba(255,255,255,.6);">BLUE — LAW</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#26243F</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0;margin-top:0;">
+        <div style="background:var(--ink-2);padding:13px 11px;">
+          <div class="stat-lbl" style="color:rgba(255,255,255,.6);">INK-2</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#6f6c63</div>
+        </div>
+        <div style="background:var(--ink-3);padding:13px 11px;">
+          <div class="stat-lbl" style="color:rgba(255,255,255,.6);">INK-3</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#a9a59a</div>
+        </div>
+        <div style="background:var(--line);padding:13px 11px;">
+          <div class="stat-lbl">LINE</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);">#e7e5dd</div>
+        </div>
+        <div style="background:var(--red);padding:13px 11px;">
+          <div class="stat-lbl" style="color:rgba(255,255,255,.6);">RED — MOVE</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#A8322B</div>
+        </div>
+      </div>
+      <div class="g-note">Blue = identity (enclosed). Red = signal (bare). Color appears only at the exception — the absence of red is the good news.</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §2 TYPOGRAPHY
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§6 Typography <span>Inter (instrument) · Spectral (editorial) · scale enforced</span></div>
+
+  <div style="border:1px solid var(--line);background:var(--panel);">
+    <div style="padding:22px 22px 16px;border-bottom:1px solid var(--line);">
+      <div style="font-size:var(--t-hero);font-weight:600;letter-spacing:-0.01em;line-height:1.1;">Hero metric — 30–38px / 600</div>
+    </div>
+    <div style="padding:16px 22px;border-bottom:1px solid var(--line);">
+      <div style="font-size:var(--t-big);font-weight:600;letter-spacing:0;line-height:1.2;">Section metric · big value — 19–24px / 600</div>
+    </div>
+    <div style="padding:14px 22px;border-bottom:1px solid var(--line);">
+      <div style="font-size:var(--t-stat);font-weight:600;">Stat value in a cell — 20px / 600</div>
+    </div>
+    <div style="padding:12px 22px;border-bottom:1px solid var(--line);">
+      <div style="font-size:var(--t-body);font-weight:500;line-height:1.5;">Body text, row values, paragraphs — 13px / 500. The measure for reading content in an Instrument surface. Keep to 60–72ch for Editorial mode.</div>
+    </div>
+    <div style="padding:11px 22px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:44px;">
+      <div style="font-size:var(--t-label);font-weight:700;letter-spacing:0.16em;text-transform:uppercase;">SECTION HEADER — 11px / 700</div>
+      <div style="font-size:var(--t-control);font-weight:600;letter-spacing:0.11em;text-transform:uppercase;">CONTROL / NAV — 11px / 600</div>
+    </div>
+    <div style="padding:10px 22px;">
+      <div style="font-size:var(--t-micro);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);">MICRO-LABEL · META · PROVENANCE — 9px / 600 · ink-3</div>
+    </div>
+  </div>
+
+  <div style="margin-top:22px;border:1px solid var(--line);background:var(--panel);padding:22px;">
+    <div style="font-size:var(--t-micro);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;">Editorial mode — Spectral</div>
+    <div style="font-family:var(--font-serif);font-size:18px;line-height:1.6;max-width:66ch;color:var(--ink);">
+      Most "smart city" work ends as a deck. Ours runs in production. Problem mapped in week one. Something working before any presentation. Every decision tracked from the start.
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §3 SECTION HEADER
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.1 Section Header <span>thin ink rule, baseline-aligned label + meta</span></div>
+  <div style="border:1px solid var(--line);background:var(--panel);padding:22px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:7px;margin-bottom:14px;">
+      <div style="font-size:11px;letter-spacing:0.16em;font-weight:700;text-transform:uppercase;">Live Systems</div>
+      <div style="font-size:10px;letter-spacing:0.1em;color:var(--ink-3);font-weight:600;">21 systems · 5 countries</div>
+    </div>
+    <div style="font-size:13px;color:var(--ink-2);line-height:1.5;max-width:64ch;">Each started as a sharp question, shipped as a working surface, and stays useful long after the launch cycle ends.</div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §4 HAIRLINE CELL GRID + STAT CELLS
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.2 Stat Cell + Hairline Grid <span>background:var(--line); gap:1px; white cells</span></div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Systems</div>
+      <div class="stat-val">21</div>
+      <div class="stat-sub">in production</div>
+    </div>
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Countries</div>
+      <div class="stat-val">5</div>
+      <div class="stat-sub">operating</div>
+    </div>
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Cities Indexed</div>
+      <div class="stat-val">174</div>
+      <div class="stat-sub">SLIC + SCTH</div>
+    </div>
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Deploy</div>
+      <div class="stat-val">14d</div>
+      <div class="stat-sub">to first surface</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Uptime</div>
+      <div class="stat-val">99.94%</div>
+      <div class="stat-sub">last 30 days</div>
+    </div>
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">SLIC Rank — Bangkok</div>
+      <div class="stat-val">12</div>
+      <div class="stat-sub">out of 157 cities</div>
+    </div>
+    <div style="background:var(--panel);padding:13px 16px;">
+      <div class="stat-lbl">Live Feeds</div>
+      <div class="stat-val">47</div>
+      <div class="stat-sub">active · 6 APIs down</div>
+    </div>
+  </div>
+  <div class="g-note">Grid background = var(--line). Gap = 1px. Each child background = var(--panel). The line shows through the gap. No border on cells — the gap IS the border.</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §5 DATA ROW
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.3 Data Row <span>label · value · delta — baseline aligned</span></div>
+  <div class="g-row">
+    <div class="g-col">
+      <div style="border:1px solid var(--line);background:var(--panel);padding:13px 16px;">
+        <div class="row">
+          <span class="row__k">AQI — Bangkok</span>
+          <span style="display:flex;align-items:baseline;gap:10px;">
+            <span class="row__v">157</span>
+            <span class="row__d">+12.3%</span>
+          </span>
+        </div>
+        <div class="row">
+          <span class="row__k">SLIC Score</span>
+          <span style="display:flex;align-items:baseline;gap:10px;">
+            <span class="row__v">68.4</span>
+            <span class="row__d">−0.39%</span>
+          </span>
+        </div>
+        <div class="row">
+          <span class="row__k">Active Incidents</span>
+          <span style="display:flex;align-items:baseline;gap:10px;">
+            <span class="row__v">3</span>
+            <span class="row__d" style="color:var(--red);">+3</span>
+          </span>
+        </div>
+        <div class="row">
+          <span class="row__k">Systems nominal</span>
+          <span style="display:flex;align-items:baseline;gap:10px;">
+            <span class="row__v">18 / 21</span>
+            <span style="font-size:11px;font-weight:600;color:var(--ink-3);width:54px;text-align:right;">—</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="g-col">
+      <div class="g-note" style="border:none;padding:0;margin:0;">Left-align labels. Right-align values and deltas. Deltas in red only when negative or critical — not for styling. Baseline-aligned across all columns. Tabular figures throughout.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §6 BAR / METER (THE LINED GLASS)
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.4 Bar / Meter — The Lined Glass <span>flat track, solid fill, square ends</span></div>
+  <div class="g-row">
+    <div class="g-col">
+      <div style="border:1px solid var(--line);background:var(--panel);padding:16px;">
+
+        <div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);">Budget utilization</span>
+            <span style="font-size:11px;font-weight:600;">69%</span>
+          </div>
+          <div class="bar"><div class="bar__fill" style="width:69%;"></div></div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);">Critical threshold</span>
+            <span style="font-size:11px;font-weight:600;color:var(--red);">94%</span>
+          </div>
+          <div class="bar bar--red"><div class="bar__fill" style="width:94%;"></div></div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);">Deploy progress</span>
+            <span style="font-size:11px;font-weight:600;color:var(--blue);">38%</span>
+          </div>
+          <div class="bar bar--blue"><div class="bar__fill" style="width:38%;"></div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="g-col">
+      <!-- Stacked allocation bar §10.5 -->
+      <div style="border:1px solid var(--line);background:var(--panel);padding:16px;">
+        <div style="font-size:var(--t-micro);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;">§10.5 Stacked Allocation</div>
+        <div style="display:flex;height:8px;border:1px solid var(--line);">
+          <div style="width:38%;background:var(--ink);"></div>
+          <div style="width:27%;background:var(--blue);"></div>
+          <div style="width:15%;background:#8f8b80;"></div>
+          <div style="flex:1;background:var(--line);"></div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:8px;">
+          <div style="display:flex;align-items:center;gap:5px;"><div style="width:8px;height:8px;background:var(--ink);"></div><span style="font-size:10px;color:var(--ink-3);">Category A · 38%</span></div>
+          <div style="display:flex;align-items:center;gap:5px;"><div style="width:8px;height:8px;background:var(--blue);"></div><span style="font-size:10px;color:var(--ink-3);">Category B · 27%</span></div>
+          <div style="display:flex;align-items:center;gap:5px;"><div style="width:8px;height:8px;background:#8f8b80;"></div><span style="font-size:10px;color:var(--ink-3);">Category C · 15%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §7 STATUS PLATE
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.6 Status Plate <span>identity field left, content right</span></div>
+  <div style="display:flex;flex-direction:column;gap:1px;">
+
+    <div style="display:flex;align-items:stretch;border:1px solid var(--line-2);background:var(--panel);">
+      <div style="background:var(--ink);color:var(--paper);padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
+        <span style="font-size:11px;letter-spacing:0.18em;font-weight:700;">NOMINAL</span>
+      </div>
+      <div style="padding:11px 20px;flex:1;">
+        <div style="font-size:13px;font-weight:600;">All systems operational</div>
+        <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Last checked 2026-06-27 · 99.94% uptime / 30d</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;border:1px solid var(--line-2);background:var(--panel);">
+      <div style="background:var(--red);color:#fff;padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
+        <span style="font-size:11px;letter-spacing:0.18em;font-weight:700;">CRITICAL</span>
+      </div>
+      <div style="padding:11px 20px;flex:1;">
+        <div style="font-size:13px;font-weight:600;color:var(--red);">3 incidents active — Phuket data feed</div>
+        <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Opened 14:32 UTC · Escalated · On-call paged</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:stretch;border:1px solid var(--line-2);background:var(--panel);">
+      <div style="background:var(--blue);color:#fff;padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
+        <span style="font-size:11px;letter-spacing:0.18em;font-weight:700;">DECISION</span>
+      </div>
+      <div style="padding:11px 20px;flex:1;">
+        <div style="font-size:13px;font-weight:600;">Chonburi IOC deployment — approve to proceed</div>
+        <div style="font-size:11px;color:var(--ink-3);margin-top:2px;">Awaiting sign-off · Deadline 2026-07-01</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §8 BUTTONS
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.7 Buttons <span>square corners · 700 weight · tabular uppercase</span></div>
+  <div class="g-row" style="align-items:center;">
+    <button class="btn btn--primary">See live systems
+      <span style="display:inline-block;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid currentColor;"></span>
+    </button>
+    <button class="btn btn--ghost">Start a brief</button>
+    <button class="btn btn--critical">Approve deployment</button>
+    <a href="#" style="font-size:11px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+      View methodology
+      <span style="display:inline-block;width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid currentColor;"></span>
+    </a>
+  </div>
+  <div class="g-note">Primary = ink fill. Critical = red fill. Ghost = transparent, ink border. Tertiary = no border, no fill, grey text + triangle. No radius. No glow. No icon libraries — solid triangle only (§11.5).</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §9 LIVE INDICATOR + DISC ATOMS
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§10.9 + §11 Live Indicator · Disc Atoms <span>the only animation · the identity unit</span></div>
+  <div class="g-row" style="align-items:center;">
+
+    <!-- Live dot -->
+    <div style="display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);padding:13px 16px;">
+      <span class="dot-live"></span>
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Live</span>
+    </div>
+
+    <!-- Disc sizes -->
+    <div style="display:flex;align-items:center;gap:16px;border:1px solid var(--line);background:var(--panel);padding:13px 16px;">
+      <span class="disc disc--sm">A</span>
+      <span class="disc disc--md">A</span>
+      <span class="disc disc--lg">A</span>
+      <span class="disc disc--md disc--hub">H</span>
+    </div>
+
+  </div>
+  <div class="g-note">The red pulse is the only sanctioned animation — slow, purposeful, unmistakable. Discs: sm=20px (nav/legend), md=34px (board header), lg=64px (hero/cover). Hub disc (masthead) = ink background.</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §10 STATION PLATE (BOARD HEADER)
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§11.3 Station Plate — Board Header <span>blue rule · disc + title · meta right</span></div>
+
+  <div style="border:1px solid var(--line);background:var(--panel);padding:22px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:2px solid var(--blue);margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:13px;">
+        <span class="disc disc--md">P</span>
+        <div>
+          <div style="font-size:9px;letter-spacing:0.18em;color:var(--ink-3);font-weight:600;">COMMAND · 01</div>
+          <div style="font-size:22px;font-weight:600;margin-top:1px;line-height:1.1;">Phuket Operations</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--ink-3);letter-spacing:0.06em;text-align:right;line-height:1.7;">
+        LIVE · PRODUCTION<br>
+        <span style="font-family:var(--font-mono);">76°N · 12.3°E</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
+      <div style="background:var(--panel);padding:11px 14px;"><div class="stat-lbl">AQI</div><div class="stat-val" style="color:var(--red);">157</div></div>
+      <div style="background:var(--panel);padding:11px 14px;"><div class="stat-lbl">Traffic Index</div><div class="stat-val">62</div></div>
+      <div style="background:var(--panel);padding:11px 14px;"><div class="stat-lbl">Incidents</div><div class="stat-val" style="color:var(--red);">3</div></div>
+      <div style="background:var(--panel);padding:11px 14px;"><div class="stat-lbl">Systems</div><div class="stat-val">18/21</div></div>
+    </div>
+  </div>
+
+  <div class="g-note">The blue rule under the header is the only horizontal line-color on the board — the line you are riding. Below it, the board reverts to mono. (§11.3)</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §11 COCKPIT / STICKY MASTHEAD PATTERN
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§8.5 Cockpit Pattern — Sticky Masthead <span>vital signs always visible · one decision away for everything else</span></div>
+
+  <div style="border:1px solid var(--line-2);background:var(--paper);">
+    <div style="background:var(--paper);border-bottom:1px solid var(--line-2);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:13px;">
+        <span class="disc disc--md disc--hub">A</span>
+        <div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;">Axiom</div>
+          <div style="font-size:10px;color:var(--ink-3);">Decision Systems</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;">
+        <a href="#" style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;">Systems</a>
+        <a href="#" style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;">Stages</a>
+        <a href="#" style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-2);text-decoration:none;">Team</a>
+        <button class="btn btn--primary" style="padding:8px 14px;font-size:10px;">Work With Us</button>
+      </div>
+    </div>
+    <!-- Vital signs strip -->
+    <div style="background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;display:flex;align-items:center;gap:22px;">
+      <div style="display:flex;align-items:center;gap:7px;">
+        <span class="dot-live"></span>
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">All systems nominal</span>
+      </div>
+      <div style="font-size:10px;color:var(--ink-3);display:flex;gap:16px;">
+        <span><b style="color:var(--ink);">21</b> systems</span>
+        <span><b style="color:var(--ink);">5</b> countries</span>
+        <span><b style="color:var(--ink);">99.94%</b> uptime</span>
+        <span><b style="color:var(--red);">3</b> incidents</span>
+      </div>
+    </div>
+  </div>
+  <div class="g-note">Cockpit pattern: vital signs in a sticky strip below the nav. Everything else is one click away. The ink hub-disc marks "home" — never blue for the home disc. (§8.5, §11.4)</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §12 VOICE EXAMPLES
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§15 Voice — Hemingway + Bukowski <span>direct · true · economical · no exclamation marks</span></div>
+  <div class="g-row">
+
+    <div class="g-col">
+      <div style="border:1px solid var(--line);background:var(--panel);">
+        <div style="padding:13px 16px 11px;border-bottom:1px solid var(--line);">
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">DON'T</div>
+          <div style="font-size:13px;color:var(--ink-2);line-height:1.6;">"We are a leading provider of innovative smart-city solutions leveraging cutting-edge AI and big data to unlock value for stakeholders."</div>
+        </div>
+        <div style="padding:13px 16px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;">DO</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.6;font-weight:500;">"21 systems in production. 5 countries. Problem mapped in week one."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-col">
+      <div style="border:1px solid var(--line);background:var(--panel);">
+        <div style="padding:13px 16px 11px;border-bottom:1px solid var(--line);">
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px;">DON'T</div>
+          <div style="font-size:13px;color:var(--ink-2);line-height:1.6;">"We are excited to announce our upcoming expansion to additional markets across Southeast Asia!"</div>
+        </div>
+        <div style="padding:13px 16px;">
+          <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;">DO</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.6;font-weight:500;">"Taipei. March 2026. Live dashboard, demo'd in 45 minutes."</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §13 GOLDEN SECTION
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§7 Golden Section — φ = 1.618 <span>primary/secondary split · never 50/50</span></div>
+
+  <div style="border:1px solid var(--line);background:var(--panel);padding:22px;">
+    <div style="display:grid;grid-template-columns:61.8fr 38.2fr;gap:1px;background:var(--line);border:1px solid var(--line);">
+      <div style="background:var(--panel);padding:16px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;">Primary — 61.8%</div>
+        <div style="font-size:13px;line-height:1.5;">Main content, argument, data. The φ proportion makes the split feel natural — not arbitrary, not symmetric. Symmetric halves are static. φ is alive.</div>
+      </div>
+      <div style="background:var(--panel);padding:16px;">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;">Secondary — 38.2%</div>
+        <div style="font-size:13px;color:var(--ink-2);line-height:1.5;">Provenance, meta, HUD, supporting data. Never a sidebar for decoration.</div>
+      </div>
+    </div>
+  </div>
+  <div class="g-note">The Golden Section (1:1.618) for layout splits. Apply to hero/detail, sidebar, card proportion, margin-to-content. Never split content in half unless the function demands symmetry.</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
+     §14 HARD BANS SUMMARY
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§20 Hard Bans <span>if in doubt, it's probably on this list</span></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);">
+    <div style="background:var(--panel);padding:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--red);margin-bottom:10px;">VISUAL</div>
+      <ul style="margin:0;padding:0;list-style:none;font-size:12px;line-height:2;color:var(--ink-2);">
+        <li>Gradients (except legibility overlay on photo)</li>
+        <li>Drop shadows, glows, blurs, glassmorphism</li>
+        <li>Rounded corners (0–2px max)</li>
+        <li>Pure #000 or pure #fff</li>
+        <li>A second free accent color</li>
+        <li>Font weights 700+ on data</li>
+        <li>Centering dense content</li>
+        <li>Decorative icons, emoji, stock imagery</li>
+      </ul>
+    </div>
+    <div style="background:var(--panel);padding:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.06em;color:var(--red);margin-bottom:10px;">MOTION / CONTENT / BEHAVIOR</div>
+      <ul style="margin:0;padding:0;list-style:none;font-size:12px;line-height:2;color:var(--ink-2);">
+        <li>Entrance animations, scroll reveals, parallax</li>
+        <li>More than one Divine Move per surface</li>
+        <li>A Move not traced to a function</li>
+        <li>Unicode arrows or chevrons</li>
+        <li>Filler — placeholder copy, dummy sections</li>
+        <li>Data without provenance</li>
+        <li>Pretension, academic plumage, jargon</li>
+        <li>Exclamation marks. Emoji.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<div style="margin-top:64px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;">
+  <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);">Axiom Design Core v2.0</div>
+  <div style="font-size:9px;color:var(--ink-3);">axiom.nonarkara.org · Non Arkaraprasertkul</div>
+</div>
+
+</body>
+</html>
