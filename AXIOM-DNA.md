@@ -684,6 +684,38 @@ One line per piece may break the rhythm to land the point. Short, sharp, earned.
 
 Shuetsu Sato softened his sign edges for one reason: to calm irritated commuters. That is the only license to break the no-radius ban. A radius is permitted **where it does measurable work on a human under stress or invitation** — Play-mode game pieces a child handles, a wayfinding sign for an anxious crowd, a touch target that must feel safe. Never for prettiness. Always for mercy. Document the reason or remove the radius.
 
+### 17.2 The Xiaohei Exception — Sanctioned Illustration
+
+> "Cute and easy to understand modernist illustration." — Non Arkaraprasertkul
+
+**Xiaohei** ([helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations)) is the one sanctioned illustration system in the Axiom universe. It is the Sato Exception applied to imagery: used where warmth, explanation, or invitation does measurable human work — never for decoration.
+
+**Where Xiaohei belongs:**
+
+- **Onboarding** — first contact with a complex system, when explanation needs a face
+- **Empty states** — dashboard with no data yet; the silence needs a human presence, not a grey placeholder
+- **Error states** — system failed; warmth reduces friction where a cold error message increases it
+- **Play mode** — game pieces, workbooks, flashcard kits where warmth is the mechanism (§4, §18.6)
+- **Explanatory panels** — sidebar callout where a diagram would be colder than a character
+
+**Where Xiaohei does NOT belong:**
+
+- Hero sections of Instrument-mode dashboards — they stay cold and exact
+- Data cells, rows, or charts — data is never decorated
+- Any surface where the Sato condition (stress, invitation, explanation) does not apply
+- As a substitute for clear affordance or legibility
+
+**Grammar:**
+
+- **One character or scene per surface.** The Divine Move rule applies to illustration as it does to everything else.
+- Never alongside another illustration style on the same surface.
+- Never as a background or full-bleed visual.
+- **Scale:** small enough to not compete with data; large enough to be absorbed in one glance.
+- **Color:** keep the character's own palette intact. Do not recolor to match Axiom tokens. The contrast between the illustration's warmth and the mono field is the point — they are meant to be different materials.
+- **The only clickable chip** in a stack or tag cloud where Xiaohei appears is the Xiaohei chip itself — it links to the source. This is the easter egg.
+
+**Credit:** Ian Neo · [ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations). Link to the source wherever the illustration appears.
+
 ---
 
 ## 18. CROSS-MEDIA APPLICATION

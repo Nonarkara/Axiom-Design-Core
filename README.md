@@ -126,6 +126,25 @@ Run before shipping anything.
 
 ---
 
+## Illustration — The Xiaohei Exception
+
+Illustration is banned in Axiom — except one.
+
+**[Xiaohei](https://github.com/helloianneo/ian-xiaohei-illustrations)** (by Ian Neo) is the single sanctioned illustration system. Cute, modernist, easy to understand. The Sato mercy-radius applied to imagery: use it where warmth does measurable human work, not where you want the page to feel "friendlier."
+
+| Use it | Don't use it |
+|---|---|
+| Empty states (no data yet) | Hero of an Instrument dashboard |
+| Error states (soften the failure) | Inside data cells or charts |
+| Onboarding (first contact with a complex system) | As a background or full-bleed |
+| Play mode artifacts | Anywhere decoration is the reason |
+
+**Grammar:** one character per surface (Divine Move rule). Keep the character's own color palette — don't remap to Axiom tokens. The contrast between the illustration warmth and the mono field is the point. Link to the source wherever it appears.
+
+Full doctrine: `AXIOM-DNA.md` §17.2.
+
+---
+
 ## Hard Bans
 
 - Gradients, drop shadows, glows, blurs, glassmorphism
