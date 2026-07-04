@@ -372,6 +372,35 @@
 
 
 <!-- ════════════════════════════════════════════════
+     §8.5 MOTION & FEEDBACK (§13) — no JS, try it live
+     ════════════════════════════════════════════════ -->
+<div class="g-section">
+  <div class="g-label">§13 Motion & Feedback <span>real easing curves · press feedback · origin-aware overlay</span></div>
+  <div class="g-row" style="align-items:flex-start; gap:32px;">
+
+    <!-- Press feedback: click and hold -->
+    <div style="border:1px solid var(--line); background:var(--panel); padding:16px 20px;">
+      <div style="font-size:9px; letter-spacing:0.14em; color:var(--ink-3); font-weight:600; margin-bottom:10px; text-transform:uppercase;">Click and hold</div>
+      <button class="btn btn--primary">Deploy</button>
+    </div>
+
+    <!-- Origin-aware popover: hover/focus reveals, scaling from the trigger corner, not the center -->
+    <div style="border:1px solid var(--line); background:var(--panel); padding:16px 20px; position:relative;">
+      <div style="font-size:9px; letter-spacing:0.14em; color:var(--ink-3); font-weight:600; margin-bottom:10px; text-transform:uppercase;">Hover the button</div>
+      <div style="position:relative; display:inline-block;">
+        <button class="btn btn--ghost" tabindex="0" onmouseover="this.nextElementSibling.style.opacity=1; this.nextElementSibling.style.transform='scale(1)'" onmouseout="this.nextElementSibling.style.opacity=0; this.nextElementSibling.style.transform='scale(0.96)'">Options</button>
+        <div class="overlay-pop" style="--overlay-origin: top left; position:absolute; top:calc(100% + 6px); left:0; opacity:0; transform:scale(0.96); background:var(--ink); color:var(--paper); padding:10px 14px; font-size:11px; white-space:nowrap; pointer-events:none; z-index:1;">
+          Scales from the trigger — not the center
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="g-note">Press: <code>transform:scale(0.97)</code> at <code>--t-press</code> (100ms) <code>--ease-out</code> — a control with no press state reads as dead. Popover: <code>transform-origin</code> set to the trigger corner via <code>--overlay-origin</code>; only true modals stay centered. Curves and durations: §13.2. No bounce, no elastic — ever (§20).</div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════
      §9 LIVE INDICATOR + DISC ATOMS
      ════════════════════════════════════════════════ -->
 <div class="g-section">

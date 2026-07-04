@@ -84,11 +84,23 @@
   --max-w-doc:   720px;   /* reading / document                       */
   --outer-pad:    22px;   /* outer page padding                       */
 
-  /* ── §8 Motion ──────────────────────────────────────────── */
-  --t-state: 120ms;        /* state transitions: ≤150ms               */
-  --ease:    ease;
-  /* Allowed: state changes ≤150ms, the slow red pulse, counting values. */
-  /* Banned: entrance animations, scroll reveals, parallax, bounces.    */
+  /* ── §8 Motion (v2.1 — craft pass, see AXIOM-DNA.md §13) ─── */
+  /* Sourced from Emil Kowalski's design-eng skill + impeccable's
+     motion reference. Same restraint, real curves instead of the
+     browser default. "ease" and one flat duration for everything
+     is itself a templated tell — see §13.4.                       */
+  --ease-out:      cubic-bezier(0.23, 1, 0.32, 1);   /* entrances, reveals   */
+  --ease-in-out:   cubic-bezier(0.77, 0, 0.175, 1);  /* on-screen movement   */
+  --ease-hover:    ease;                              /* hover/color shift    */
+  /* Bounce/elastic curves remain hard-banned — §20.                        */
+
+  --t-press:  100ms;   /* button/control press feedback   */
+  --t-state:  150ms;   /* hover, toggle, small state change (was 120ms)     */
+  --t-layout: 250ms;   /* panel/drawer/expand — layout-level change         */
+
+  /* Legacy alias — kept so existing components using --ease/--t-state
+     keep working; new components should reach for the named tokens above. */
+  --ease: var(--ease-hover);
 }
 
 /* ── Reset ────────────────────────────────────────────────── */
@@ -122,10 +134,20 @@ body {
   outline-offset: 2px;
 }
 
-/* ── Live pulse — the only sanctioned animation ───────────── */
+/* ── Live pulse — the only sanctioned continuous animation ── */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: .2; }
+}
+
+/* ── Reduced motion — §19 promised this; now it is actually true ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ── Utility: wrap ────────────────────────────────────────── */
@@ -238,6 +260,27 @@ body {
 .btn--primary:hover  { opacity: .88; }
 .btn--critical:hover { opacity: .88; }
 .btn--ghost:hover    { border-color: var(--blue); color: var(--blue); }
+
+/* Press feedback — the control must feel heard. Not decoration: the
+   Lined Glass principle applies to touch, not just to read-state.  */
+.btn {
+  transition: background var(--t-state) var(--ease-hover),
+              color var(--t-state) var(--ease-hover),
+              border-color var(--t-state) var(--ease-hover),
+              transform var(--t-press) var(--ease-out);
+}
+.btn:active { transform: scale(0.97); }
+
+/* ── Utility: origin-aware overlay (popover / tooltip) ───────
+   Scale in FROM the trigger, never from the element's own center —
+   center-scale is correct only for true modals (§ modal note below). */
+.overlay-pop {
+  transform-origin: var(--overlay-origin, center);
+  transition: transform var(--t-state) var(--ease-out),
+              opacity var(--t-state) var(--ease-out);
+}
+.overlay-pop[data-state="closed"] { opacity: 0; transform: scale(0.96); }
+/* Modals stay centered — do not set --overlay-origin on .overlay-modal. */
 
 /* ── Utility: live dot ────────────────────────────────────── */
 .dot-live {

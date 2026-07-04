@@ -2,7 +2,7 @@
 
 > **For:** Axiom — decision systems for cities, governments, and operators. axiom.nonarkara.org
 > **Use:** Throw this document at any agent — slide-maker, infographic-maker, dashboard-builder, system-builder, document-writer. It contains everything that agent needs to produce a correct Axiom design: static or interactive, gamified or narrative-driven.
-> **Version:** 2.0 — The Living Edition.
+> **Version:** 2.1 — The Living Edition. (2.1 adds the Motion craft pass, §13 — real easing curves and a templated-ness audit, credited in §13.5.)
 > **Lineage:** Rams · Moggridge · Norman · MoMA Digital · Maeda · Vignelli/NYCTA · Sullivan · Wright · Kahn · Koolhaas · Murcutt · Bawa · Ongard Satrabundhu · Sato · Hemingway · Bukowski · Kant.
 
 ---
@@ -601,11 +601,53 @@ Same action, same way, everywhere. Same pattern, same meaning, everywhere. Learn
 
 ## 13. MOTION
 
-**Allowed:** state changes ≤150ms ease; the slow red pulse; a value counting to its number; feedback within 100ms.
+**v2.1.** The rule underneath is unchanged: **motion confirms, never entertains.** If an animation does not answer "did my action work?", it does not belong. What changed is craft — the same restraint, executed with the precision a differentiator actually requires. Sourced from Emil Kowalski's design-engineering skill and impeccable's motion reference (§13.5); both credited because the Ongard Move (§1.2) requires it.
 
-**Banned:** entrance animations, scroll-triggered reveals, parallax, decorative loops, bouncing eases, anything that delays comprehension.
+### 13.1 The decision framework — run this before writing any motion
 
-**The rule:** motion confirms, never entertains. If an animation does not answer "did my action work?", it does not belong. (Play mode earns a narrow exception: reward feedback on a correct move — still fast, still purposeful.)
+1. **Should it animate at all?** Frequency decides. Seen 100+ times/day (keyboard shortcuts, toggles) → no animation, ever. Tens of times/day (hover, list nav) → remove or reduce hard. Occasional (modals, drawers, toasts) → the standard treatment below. Rare/first-time (onboarding, empty states) → Play mode's narrow delight exception applies.
+2. **What is the purpose?** Valid purposes: spatial consistency, state indication, feedback, preventing a jarring cut. "It looks cool" is not a purpose — the Divine Move rule (§14) applies to motion exactly as it does to layout: function-compelled, or it is decoration, and decoration is a lie.
+3. **What easing?** Entering/exiting → `--ease-out`. Moving/morphing on screen → `--ease-in-out`. Hover/color shift → `--ease-hover`. Never `ease-in` on a UI element — it delays the first frame the operator is watching most closely, and reads as sluggish even at identical duration.
+4. **How fast?** Press feedback 100ms. State change 150ms. Layout-level change (drawer, expand) 250ms. Nothing UI-facing above 300ms — a 180ms control feels more responsive than a 400ms one at the same task.
+
+### 13.2 Tokens (see tokens.css §8)
+
+```css
+--ease-out:    cubic-bezier(0.23, 1, 0.32, 1);   /* entrances, reveals   */
+--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);  /* on-screen movement   */
+--ease-hover:  ease;                              /* hover / color shift  */
+--t-press:  100ms;   --t-state: 150ms;   --t-layout: 250ms;
+```
+
+The built-in CSS easings (`ease`, `ease-in-out`) are correct for hover/color only. Everything that enters, exits, or moves gets a real curve — the browser default is too weak to feel intentional. This is the specific gap: a flat `--ease: ease` applied to every transition, with no press state and no origin-awareness, is not restraint — it is the absence of a decision. That absence is what "templated" feels like from the inside.
+
+### 13.3 Concrete rules, not vibes
+
+- **Buttons must feel pressed.** `transform: scale(0.97)` on `:active`, 100ms `--ease-out`. This is feedback, not flourish — Norman's 100ms rule (§12.3) already requires it; this is that rule with the right curve.
+- **Popovers scale from their trigger**, never from center (`.overlay-pop`, tokens.css). **Modals are the exception** — they have no single trigger, so they stay centered.
+- **Never animate from `scale(0)`.** Nothing in the world disappears to nothing and reappears from nothing. Start an entrance at `scale(0.95)` + `opacity: 0`.
+- **Exit is faster than enter.** ~75% of the enter duration. The system responds fast; it only takes its time when the operator is deciding, not when it is confirming.
+- **Only animate `transform` and `opacity`.** Both skip layout and paint. Animating `width`/`height`/`top`/`left`/margins triggers a full reflow and is the most common cause of janky "premium" motion.
+- **Transitions over keyframes for anything re-triggerable** (toasts, live status changes) — transitions retarget mid-flight; keyframes restart from zero and stutter under rapid updates.
+
+### 13.4 What stays banned, and why it's still correct
+
+Entrance choreography, scroll-triggered reveals, parallax, and decorative loops remain banned in **Instrument mode** — a dashboard the operator checks fifty times a day cannot afford a fade-in on every panel; per §13.1 rule 1, that frequency alone disqualifies it. Bounce and elastic easing remain banned in **every** mode — real objects decelerate, they don't oscillate; a bouncing UI reads as a toy, not an instrument.
+
+Editorial and Play modes may spend **one** entrance per surface under the ordinary Divine Move constraint (§14): function-compelled, full commitment, never two. A calm document does not need a reveal to feel finished; if it earns one, it earns exactly one.
+
+### 13.5 The templated-ness risk — read this before you copy this file again
+
+Independent AI-slop audits (impeccable's detector, run against thousands of generated interfaces) now flag **warm cream/beige page grounds** and **Inter** as recognizable tells of AI-generated design — not because either choice is wrong, but because so many systems reached for the same "safe, tasteful" default that the default became the tell. Axiom's `--paper: #f6f5f2` and `--font-sans: Inter` are exactly that palette and that face.
+
+This is not a reason to rip out either token. Inter is chosen here for a real, load-bearing reason — it runs everywhere, including PowerPoint and email, which is the whole point of a system meant to survive contact with a client's toolchain. The response is not novelty for its own sake. It is:
+
+- **The Divine Move stays rare and real.** A generic template never commits to one true oversized gesture — it hedges with several medium ones. Axiom's one-per-surface rule is the actual differentiator; audit it honestly, every time (§22.2).
+- **Motion craft is now part of the spine**, not an afterthought. Flat easing and no press feedback are themselves slop tells (§13.3-4) — precision here is free distinctiveness that costs nothing in restraint.
+- **Data honesty and density (§16) don't templatize.** A generic dashboard fakes provenance with vanity metrics; Axiom's refuse-to-decorate stance produces a different artifact every time, because the data is different every time. The frame repeats; the content never does.
+- **If a project genuinely needs to look unmistakably itself** against five other Instrument-mode dashboards in the same room, the sanctioned knobs (§21.1) include swapping the editorial display face and adjusting density — reach for those before reaching to break the ban list.
+
+Credit where it's due, per the Ongard Move: the motion framework in §13.1-13.3 is adapted from [emilkowalski/skills](https://github.com/emilkowalski/skills) (Emil Kowalski, animations.dev) and [pbakaus/impeccable](https://github.com/pbakaus/impeccable) (Paul Bakaus). Steal and improve; say so.
 
 ---
 
@@ -800,7 +842,7 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 - ❌ More than one Divine Move per surface
 - ❌ A Move you cannot trace to a function (that is decoration)
 - ❌ Unicode arrows or chevrons (solid triangle only)
-- ❌ Entrance animations, scroll reveals, parallax, decorative loops
+- ❌ Entrance choreography, scroll reveals, parallax, decorative loops in **Instrument mode** — everywhere, ❌ bounce/elastic easing, animation on keyboard-triggered actions, and flat `ease` on anything that enters/exits/moves (§13)
 - ❌ Tooltips as a substitute for clear affordance
 - ❌ Blaming the user for "user errors"
 - ❌ Arbitrary spacing not derived from the type scale
@@ -879,7 +921,9 @@ html,body{margin:0;padding:0;background:#f6f5f2;}
 □ COLOR: Grey for normal, blue for identity (enclosed), red for the one exception (bare)?
 □ VOICE: Direct, true, economical, unpretentious — and still alive?
 □ HONESTY: Provenance, dates, caveats shown? Data untouched?
+□ MOTION: Real easing curve, not flat `ease`? Press feedback on every button? Origin-aware popovers? Nothing entering from `scale(0)`? (§13)
 □ LEGIBILITY: Contrast passes? Not signaling by color alone?
+□ TEMPLATED-NESS: Does this surface read identical to the last five Instrument-mode builds, or did the Divine Move and the data actually differ? (§13.5)
 □ INEVITABILITY: Could the user imagine no rational alternative?
 ```
 

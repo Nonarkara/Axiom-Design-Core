@@ -191,9 +191,10 @@ Full doctrine: `AXIOM-DNA.md` §17.2.
 - Emoji, decorative icons, stock imagery
 - Font weights 700+ on data
 - Centering dense content
-- Entrance animations, scroll reveals, parallax
+- Entrance choreography, scroll reveals, parallax (Instrument mode); bounce/elastic easing (always)
 - Decoration of any kind — decoration is a lie about who we are
 
+Motion has a real craft layer now — easing curves, timing tiers, press feedback. See `AXIOM-DNA.md` §13.
 Full ban list in `AXIOM-DNA.md` §20.
 
 ---
