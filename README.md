@@ -214,4 +214,6 @@ When generating any Axiom artifact:
 
 ---
 
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
 *axiom.nonarkara.org · Non Arkaraprasertkul · Axiom X Co., Ltd.*
