@@ -1,0 +1,6 @@
+# Local scratch — audit / trace / snapshot files
+__snap-*.png
+audit-*.cjs
+trace-*.cjs
+snap*.cjs
+.scratch-*/

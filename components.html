@@ -2,51 +2,169 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#f6f5f2">
   <title>Axiom — Component Gallery</title>
   <link rel="stylesheet" href="tokens.css">
   <style>
-    body { padding: 44px var(--outer-pad); max-width: 1100px; margin: 0 auto; }
+    /* ─── Page layout ─────────────────────────────────────
+       Mobile-first. Tuned for:
+       - Phone (≥ 320px) and folded foldable covers
+       - iPad split-view half-screen (512px) and iPad portrait (768px)
+       - Unfolded foldables (≥ 840px) and iPad landscape
+       - Desktop ≥ 1200px
+       The hairline cell grid (§10) stays square; padding and
+       column count adapt.                              */
+    body {
+      padding: 22px 16px;
+      padding-top: calc(22px + env(safe-area-inset-top, 0));
+      padding-bottom: calc(22px + env(safe-area-inset-bottom, 0));
+      max-width: 1100px;
+      margin: 0 auto;
+      -webkit-text-size-adjust: 100%;
+    }
 
     /* Gallery scaffolding */
-    .g-section { margin-bottom: 64px; }
+    .g-section { margin-bottom: 44px; }
     .g-label {
       font-size: var(--t-micro); font-weight: 700; letter-spacing: 0.20em;
       text-transform: uppercase; color: var(--ink-3);
-      border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 22px;
+      border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 18px;
       display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 4px;
     }
     .g-label span { font-weight: 500; letter-spacing: 0; color: var(--ink-3); font-size: 10px; text-transform: none; }
-    .g-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start; }
-    .g-col { min-width: 240px; flex: 1; }
+    .g-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; }
+    .g-col { min-width: 0; flex: 1 1 100%; }
     .g-note {
       font-size: 10px; color: var(--ink-3); margin-top: 10px; font-style: italic;
       padding-top: 8px; border-top: 1px solid var(--line);
     }
 
-    /* Code snippets */
+    /* Code snippets — scrollable on narrow viewports, readable on wide */
     pre {
       background: var(--panel); border: 1px solid var(--line);
-      padding: 13px 16px; font-family: var(--font-mono); font-size: 10px;
+      padding: 11px 13px; font-family: var(--font-mono); font-size: 10px;
       line-height: 1.6; overflow-x: auto; margin: 0;
+      white-space: pre; -webkit-overflow-scrolling: touch;
     }
+    pre code { font-family: inherit; }
 
-    /* Masthead */
+    /* Masthead — stacks on phone, side-by-side on tablet+ */
     .masthead {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-bottom: 22px; margin-bottom: 44px;
+      padding: 14px 0 22px; margin-bottom: 32px;
       border-bottom: 2px solid var(--ink);
     }
-    .masthead__title { font-size: 22px; font-weight: 600; }
-    .masthead__meta { font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
+    .masthead__title { font-size: 18px; font-weight: 600; line-height: 1.2; }
+    .masthead__meta { font-size: var(--t-micro); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+    .masthead__sub  { font-size: 10px; color: var(--ink-3); line-height: 1.6; margin-top: 8px; }
+
+    /* Tap targets — minimum 44px on touch devices */
+    a, button { min-height: 44px; display: inline-flex; align-items: center; }
+    a { color: var(--ink); }
+
+    /* Section index — sticky on tablet+, hidden on phone (too cramped) */
+    .g-index {
+      display: none;
+      position: sticky; top: 16px;
+      align-self: flex-start;
+      width: 180px; flex-shrink: 0;
+      font-size: 10px; line-height: 1.6;
+    }
+    .g-index a { display: block; padding: 6px 8px; color: var(--ink-3); border-left: 2px solid var(--line); }
+    .g-index a:hover { color: var(--ink); border-left-color: var(--blue); }
+
+    /* Layout: sticky side index on iPad+, stacked on phone */
+    .g-layout { display: flex; flex-direction: column; gap: 32px; }
+
+    /* ─── Breakpoints ───────────────────────────────────── */
+
+    /* iPad portrait / unfolded foldable cover (768-899px) */
+    @media (min-width: 600px) {
+      body { padding: 32px 22px; padding-top: calc(32px + env(safe-area-inset-top, 0)); padding-bottom: calc(32px + env(safe-area-inset-bottom, 0)); }
+      .g-col { flex: 1 1 calc(50% - 7px); }
+      .g-row { gap: 18px; }
+      .g-section { margin-bottom: 56px; }
+      .masthead { display: flex; align-items: flex-start; justify-content: space-between; gap: 22px; padding-bottom: 22px; }
+      .masthead__title { font-size: 22px; }
+      .masthead__sub { margin-top: 0; }
+    }
+
+    /* iPad portrait (≥ 768px) — sticky section index */
+    @media (min-width: 768px) {
+      .g-layout { display: grid; grid-template-columns: 180px 1fr; align-items: start; }
+      .g-main { min-width: 0; }
+      /* Grid/flex containers with inline 1fr or auto columns have implicit min-width: auto (= content min).
+         Force them to 0 so the g-main can fill the grid column. */
+      .g-main [style*="grid-template-columns"] { min-width: 0; }
+      .g-main [style*="grid-template-columns"] > * { min-width: 0; }
+      .g-main [style*="display:flex"] { min-width: 0; }
+      .g-main [style*="display:flex"] > * { min-width: 0; }
+      .g-index { display: block; }
+      body { padding: 44px 22px; padding-top: calc(44px + env(safe-area-inset-top, 0)); padding-bottom: calc(44px + env(safe-area-inset-bottom, 0)); }
+    }
+
+    /* Phone / iPad split — make g-row inner content reflow.
+       Some sections use inline `gap: 32px` and inline 250px cells.
+       Force flex-wrap and shrink inline-cell min-widths so the
+       section never overflows the viewport on narrow screens. */
+    @media (max-width: 599px) {
+      .g-row { gap: 14px !important; }
+      .g-row > * { min-width: 0; max-width: 100%; }
+      .g-row > * > * { max-width: 100%; }
+      /* The popover demo (Motion section) — let the long text wrap. */
+      .overlay-pop { white-space: normal !important; max-width: calc(100vw - 64px); }
+      /* Demo of the cockpit pattern: the inline-styled nav row
+         (Systems / Stages / Team / Work With Us) doesn't wrap.
+         Force it to wrap on phone so the demo doesn't overflow. */
+      [style*="display:flex"][style*="gap:22px"] { flex-wrap: wrap !important; row-gap: 8px; }
+    }
+
+    /* iPad landscape / unfolded foldable (≥ 900px) — 3 columns */
+    @media (min-width: 900px) {
+      .g-col { flex: 1 1 calc(33.333% - 12px); }
+      .g-row { gap: 18px; }
+    }
+
+    /* Desktop (≥ 1200px) — full layout */
+    @media (min-width: 1200px) {
+      body { max-width: 1320px; padding: 44px var(--outer-pad); padding-top: calc(44px + env(safe-area-inset-top, 0)); padding-bottom: calc(44px + env(safe-area-inset-bottom, 0)); }
+      .g-col { flex: 1 1 0; }
+      .g-row { gap: 22px; }
+    }
+
+    /* iPad split-view — 512px wide. Already covered by the 600px breakpoint,
+       but the 3-col grid (≥ 900px) keeps 2-col here, which is what we want. */
+
+    /* Foldable unfolded — wide but short. Use the iPad-landscape layout. */
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+
+    /* Hide the hint on phone, show on tablet+ */
+    .g-fhint { display: block; }
+    @media (min-width: 768px) { .g-fhint { display: none; } }
+
+    /* Masthead — stack on phone, side-by-side on tablet+ */
+    .masthead { flex-wrap: wrap; }
+    .masthead > div:last-child { text-align: left; }
+    @media (min-width: 600px) {
+      .masthead { flex-wrap: nowrap; }
+      .masthead > div:last-child { text-align: right; }
+    }
   </style>
 </head>
 <body>
 
 <div class="masthead">
   <div>
-    <div class="masthead__meta">Axiom Design Core v2.0</div>
+    <div class="masthead__meta">Axiom Design Core v2.1</div>
     <div class="masthead__title">Component Gallery</div>
+    <div class="masthead__sub g-fhint">Tap any cell to copy its CSS. Best viewed on iPad or unfolded foldable — section index appears at the left.</div>
   </div>
   <div style="font-size:10px;color:var(--ink-3);text-align:right;line-height:1.8;">
     Instrument mode<br>
@@ -54,11 +172,29 @@
   </div>
 </div>
 
+<div class="g-layout">
+  <nav class="g-index" aria-label="Section index">
+    <a href="#s1">Color</a>
+    <a href="#s2">Type</a>
+    <a href="#s3">Section header</a>
+    <a href="#s4">Stat cell</a>
+    <a href="#s5">Data row</a>
+    <a href="#s6">Bar / meter</a>
+    <a href="#s7">Status plate</a>
+    <a href="#s8">Buttons</a>
+    <a href="#s9">Motion</a>
+    <a href="#s10">Live disc</a>
+    <a href="#s11">Station plate</a>
+    <a href="#s12">Cockpit strip</a>
+    <a href="#s13">Voice</a>
+  </nav>
+  <div class="g-main">
+
 
 <!-- ════════════════════════════════════════════════
      §1 COLORS
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s1">
   <div class="g-label">§5 Color System <span>DNA §5 · The two-color law</span></div>
   <div class="g-row">
 
@@ -109,7 +245,7 @@
 <!-- ════════════════════════════════════════════════
      §2 TYPOGRAPHY
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s2">
   <div class="g-label">§6 Typography <span>Inter (instrument) · Spectral (editorial) · scale enforced</span></div>
 
   <div style="border:1px solid var(--line);background:var(--panel);">
@@ -146,7 +282,7 @@
 <!-- ════════════════════════════════════════════════
      §3 SECTION HEADER
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s3">
   <div class="g-label">§10.1 Section Header <span>thin ink rule, baseline-aligned label + meta</span></div>
   <div style="border:1px solid var(--line);background:var(--panel);padding:22px;">
     <div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:7px;margin-bottom:14px;">
@@ -161,7 +297,7 @@
 <!-- ════════════════════════════════════════════════
      §4 HAIRLINE CELL GRID + STAT CELLS
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s4">
   <div class="g-label">§10.2 Stat Cell + Hairline Grid <span>background:var(--line); gap:1px; white cells</span></div>
 
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);">
@@ -211,7 +347,7 @@
 <!-- ════════════════════════════════════════════════
      §5 DATA ROW
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s5">
   <div class="g-label">§10.3 Data Row <span>label · value · delta — baseline aligned</span></div>
   <div class="g-row">
     <div class="g-col">
@@ -256,7 +392,7 @@
 <!-- ════════════════════════════════════════════════
      §6 BAR / METER (THE LINED GLASS)
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s6">
   <div class="g-label">§10.4 Bar / Meter — The Lined Glass <span>flat track, solid fill, square ends</span></div>
   <div class="g-row">
     <div class="g-col">
@@ -313,7 +449,7 @@
 <!-- ════════════════════════════════════════════════
      §7 STATUS PLATE
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s7">
   <div class="g-label">§10.6 Status Plate <span>identity field left, content right</span></div>
   <div style="display:flex;flex-direction:column;gap:1px;">
 
@@ -354,7 +490,7 @@
 <!-- ════════════════════════════════════════════════
      §8 BUTTONS
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s8">
   <div class="g-label">§10.7 Buttons <span>square corners · 700 weight · tabular uppercase</span></div>
   <div class="g-row" style="align-items:center;">
     <button class="btn btn--primary">See live systems
@@ -374,7 +510,7 @@
 <!-- ════════════════════════════════════════════════
      §8.5 MOTION & FEEDBACK (§13) — no JS, try it live
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s9">
   <div class="g-label">§13 Motion & Feedback <span>real easing curves · press feedback · origin-aware overlay</span></div>
   <div class="g-row" style="align-items:flex-start; gap:32px;">
 
@@ -403,7 +539,7 @@
 <!-- ════════════════════════════════════════════════
      §9 LIVE INDICATOR + DISC ATOMS
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s10">
   <div class="g-label">§10.9 + §11 Live Indicator · Disc Atoms <span>the only animation · the identity unit</span></div>
   <div class="g-row" style="align-items:center;">
 
@@ -429,7 +565,7 @@
 <!-- ════════════════════════════════════════════════
      §10 STATION PLATE (BOARD HEADER)
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s11">
   <div class="g-label">§11.3 Station Plate — Board Header <span>blue rule · disc + title · meta right</span></div>
 
   <div style="border:1px solid var(--line);background:var(--panel);padding:22px;">
@@ -462,7 +598,7 @@
 <!-- ════════════════════════════════════════════════
      §11 COCKPIT / STICKY MASTHEAD PATTERN
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s12">
   <div class="g-label">§8.5 Cockpit Pattern — Sticky Masthead <span>vital signs always visible · one decision away for everything else</span></div>
 
   <div style="border:1px solid var(--line-2);background:var(--paper);">
@@ -502,7 +638,7 @@
 <!-- ════════════════════════════════════════════════
      §12 VOICE EXAMPLES
      ════════════════════════════════════════════════ -->
-<div class="g-section">
+<div class="g-section" id="s13">
   <div class="g-label">§15 Voice — Hemingway + Bukowski <span>direct · true · economical · no exclamation marks</span></div>
   <div class="g-row">
 
@@ -592,12 +728,13 @@
       </ul>
     </div>
   </div>
+  </div>
 </div>
 
 
 <!-- Footer -->
-<div style="margin-top:64px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;">
-  <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);">Axiom Design Core v2.0</div>
+<div style="margin-top:64px;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+  <div style="font-size:9px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);">Axiom Design Core v2.1</div>
   <div style="font-size:9px;color:var(--ink-3);">axiom.nonarkara.org · Non Arkaraprasertkul</div>
 </div>
 

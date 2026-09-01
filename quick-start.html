@@ -3,6 +3,12 @@
   AXIOM DESIGN CORE — Quick-Start Template
   Instrument mode. Clone this, edit the content, ship.
 
+  Tuned for iPad and foldable phones. Works on:
+  - Phone (≥ 320px) and folded foldable covers
+  - iPad portrait (768px) and split-view (512px)
+  - iPad landscape and unfolded foldable (≥ 900px)
+  - Desktop ≥ 1200px
+
   Checklist before shipping:
   □ MODE correct? (operating / reading / learning)
   □ Every element works?
@@ -11,11 +17,15 @@
   □ Exactly one Divine Move?
   □ Color: grey/blue-enclosed/red-bare only?
   □ Voice: direct, true, economical?
+  □ Touch targets ≥ 44px on touch devices?
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#f6f5f2">
   <title>Axiom — [Page Title]</title>
   <meta name="description" content="[Description — under 155 chars, factual, no adjectives]">
 
@@ -32,6 +42,7 @@
     body {
       background: var(--paper);
       color: var(--ink);
+      -webkit-text-size-adjust: 100%;
     }
 
     /* ── Masthead (cockpit — stays sticky) ────────────────── */
@@ -47,11 +58,17 @@
       max-width: var(--max-w-tool);
       margin: 0 auto;
       padding: 0 var(--outer-pad);
+      padding-top: env(safe-area-inset-top, 0);
+      padding-bottom: env(safe-area-inset-bottom, 0);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 56px;
-      gap: 22px;
+      height: auto;
+      min-height: 56px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -61,6 +78,7 @@
       text-decoration: none;
       color: inherit;
       flex-shrink: 0;
+      min-height: 44px;
     }
 
     .brand__name {
@@ -80,7 +98,8 @@
     .nav {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .nav a {
@@ -91,9 +110,19 @@
       color: var(--ink-2);
       text-decoration: none;
       transition: color var(--t-state) var(--ease);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .nav a:hover { color: var(--ink); }
+    .nav a:hover, .nav a:focus-visible { color: var(--ink); }
+
+    .masthead .btn { min-height: 44px; }
+
+    /* Tap targets — minimum 44px on touch devices */
+    a, button, .btn { min-height: 44px; }
+    a, .nav a { display: inline-flex; align-items: center; }
+    a { color: var(--ink); }
 
     /* ── Main content wrap ────────────────────────────────── */
     .page {
@@ -255,6 +284,52 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-3);
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+
+    /* iPad portrait / unfolded foldable small (≥ 600px) */
+    @media (min-width: 600px) {
+      .masthead__inner { flex-wrap: nowrap; height: 56px; padding-top: 0; padding-bottom: 0; }
+      .nav { gap: 22px; flex-wrap: nowrap; }
+    }
+
+    /* iPad split-view / half-screen (≥ 512px) — show nav with smaller gap */
+    @media (min-width: 512px) and (max-width: 759px) {
+      .nav a { font-size: 9px; letter-spacing: 0.08em; }
+    }
+
+    /* Phone (≤ 511px) — collapse nav into a wrap, smaller brand sub */
+    @media (max-width: 511px) {
+      .brand__sub { display: none; }
+      .nav { width: 100%; justify-content: flex-start; gap: 14px; row-gap: 4px; padding-top: 4px; }
+      .nav a { font-size: 9px; }
+    }
+
+    /* iPad portrait (≥ 760px) — 2-col hero (also at original 760px rule above) */
+
+    /* iPad landscape / unfolded foldable (≥ 640px) — 4-col strip (also at original 640px rule above) */
+
+    /* Foldable unfolded (840px+ but pre-900px) — use 4-col strip */
+    @media (min-width: 840px) and (max-width: 899px) {
+      .hero__strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Desktop (≥ 1200px) — full width */
+    @media (min-width: 1200px) {
+      .page { max-width: 1320px; }
+    }
+
+    /* Tap targets — minimum 44px */
+    @media (hover: none) and (pointer: coarse) {
+      a, button, .btn, .nav a { min-height: 44px; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
 </head>

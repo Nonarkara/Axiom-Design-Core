@@ -4,6 +4,8 @@
 > Function first. Then subtract. The subtraction is the beauty.  
 > One bold move, purely cut, until it looks like it was always there.
 
+> **Tuned for iPad and foldable.** Open `components.html` on iPad mini (768) or an unfolded Galaxy Z Fold (840) — the sticky §-index appears at the left, color grids stay 4-up, and every tap target clears 44px. Phone-width viewports still render cleanly; the index hides and grids reflow to 2-up. Touch-target + reduced-motion safety rules are baked in.
+
 **For:** Axiom — decision systems for cities, governments, and operators. `axiom.nonarkara.org`  
 **Use:** Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, or any other. The 5-line spine is in [`AGENTS.md`](AGENTS.md). Install steps for every agent type in [`USAGE.md`](USAGE.md).  
 **Version:** 2.1 — The Living Edition  
