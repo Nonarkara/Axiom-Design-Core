@@ -5,9 +5,23 @@
 > One bold move, purely cut, until it looks like it was always there.
 
 **For:** Axiom — decision systems for cities, governments, and operators. `axiom.nonarkara.org`  
-**Use:** Throw this repo at any agent — slide-maker, infographic-maker, dashboard-builder, document-writer. Everything needed to produce correct Axiom design.  
-**Version:** 2.0 — The Living Edition  
-**Lineage:** Rams · Moggridge · Norman · MoMA Digital · Maeda · Vignelli/NYCTA · Sullivan · Wright · Kahn · Koolhaas · Murcutt · Bawa · Ongard · Sato · Hemingway · Bukowski · Kant
+**Use:** Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, or any other. The 5-line spine is in [`AGENTS.md`](AGENTS.md). Install steps for every agent type in [`USAGE.md`](USAGE.md).  
+**Version:** 2.1 — The Living Edition  
+**Lineage:** Rams · Moggridge · Norman · MoMA Digital · Maeda · Vignelli/NYCTA · Sullivan · Wright · Kahn · Koolhaas · Murcutt · Bawa · Ongard · Sato · Hemingway · Bukowski · Kant  
+**License:** MIT — see [`LICENSE`](LICENSE).
+
+---
+
+## Start here
+
+| If you are… | Read |
+|---|---|
+| An **AI agent** (Claude, Cursor, Cline, Aider, etc.) | [`AGENTS.md`](AGENTS.md) — the 5-line DNA. |
+| **Installing** in your project / agent | [`USAGE.md`](USAGE.md) — install steps per agent type. |
+| Looking for the **full operating standard** | [`AXIOM-DNA.md`](AXIOM-DNA.md) — 22 sections, every rule, every code example. |
+| A **human** wanting a quick read | This README, then [`tokens.css`](tokens.css) to drop in. |
+
+The four habits that make every Axiom surface land: **balanced, compact, no non-sense, communicative.** They are the taste layer below the rules — see [`AGENTS.md`](AGENTS.md) §4 for the full text and how they map to every Dr Non project.
 
 ![Axiom Design Core — system overview](assets/photos/axiom-concept-01.png)
 
@@ -201,19 +215,23 @@ Full ban list in `AXIOM-DNA.md` §20.
 
 ## For Agents
 
-When generating any Axiom artifact:
+The full agent guide is in [`AGENTS.md`](AGENTS.md) — it gives any AI agent (Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot) the 5-line DNA + checklist + colour law + hard bans. Install steps for every agent type are in [`USAGE.md`](USAGE.md).
 
-1. Read `AXIOM-DNA.md` §0 (the drop-in system prompt) — that block alone produces correct work.
+Quick path for any agent:
+
+1. Read [`AGENTS.md`](AGENTS.md) — the spine.
 2. Identify the mode: Instrument / Editorial / Play.
-3. Import `tokens.css` or copy the token block.
-4. Use components from `components.html` as reference — do not invent variants.
-5. Run the checklist above before declaring done.
+3. Import [`tokens.css`](tokens.css) or copy the token block.
+4. Reference [`components.html`](components.html) — do not invent variants.
+5. Run the AGENTS.md §7 checklist before declaring done.
 6. One Divine Move per surface. Trace it to a function or delete it.
 
 ![07 — Build Workflow & Shipping Checklist: from idea to working system](assets/photos/axiom-concept-08.png)
 
 ---
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE).
+## License
 
-*axiom.nonarkara.org · Non Arkaraprasertkul · Axiom X Co., Ltd.*
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE).
+
+*axiom.nonarkara.org · Non Arkaraprasertkul · Axiom X Co., Ltd. · MIT License.*
