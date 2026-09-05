@@ -6,9 +6,22 @@
 
 **For:** Axiom — decision systems for cities, governments, and operators. `axiom.nonarkara.org`  
 **Use:** Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, or any other. The 5-line spine is in [`AGENTS.md`](AGENTS.md). Install steps for every agent type in [`USAGE.md`](USAGE.md).  
-**Version:** 2.1 — The Living Edition  
+**Version:** 2.2 — The Operational Edition  
 **Lineage:** Rams · Moggridge · Norman · MoMA Digital · Maeda · Vignelli/NYCTA · Sullivan · Wright · Kahn · Koolhaas · Murcutt · Bawa · Ongard · Sato · Hemingway · Bukowski · Kant  
 **License:** MIT — see [`LICENSE`](LICENSE).
+
+---
+
+## v2.2 — What changed
+
+The repo is no longer just a manifesto. It now ships the **operational layer** that any React 19 / Vite dashboard can install, use, and audit against.
+
+- **`packages/react/`** — 16 React 19 + TypeScript components. `import { Cockpit, Hero, StatCell, … } from '@axiom-design/core-react'`. [`README`](packages/react/README.md)
+- **`packages/audit/`** — `npx axiom-audit ./apps/web` — scans for hard-bans (rounded-md, shadow-lg, gradient, font-weight 700, Unicode arrows, …). `--strict` for CI. [`README`](packages/audit/README.md)
+- **`packages/tailwind-preset/`** — drop-in Tailwind preset that maps tokens and **removes the banned utilities** from the generated CSS. [`README`](packages/tailwind-preset/README.md)
+- **[`WIRE-IN.md`](WIRE-IN.md)** — five-minute install + CI recipe for any dashboard.
+
+The philosophy in [`AGENTS.md`](AGENTS.md) and [`AXIOM-DNA.md`](AXIOM-DNA.md) is unchanged. v2.2 puts code on top of it.
 
 ---
 

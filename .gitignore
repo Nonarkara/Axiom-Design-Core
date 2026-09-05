@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Test
+coverage/
+
+# Logs
+*.log
+
+# Env
+.env
+.env.local
+.env.*.local
