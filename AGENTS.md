@@ -106,6 +106,22 @@ Direct. True. Economical — cut every word that carries no freight, as if you p
 
 ---
 
+### Origin tells (added 2026-09-08 — see `ANTI-TEMPLATE.md`)
+
+The bans above catch decoration. These catch **provenance** — what makes a stranger say "an agent built this."
+
+- **Fonts:** Inter, Roboto, Open Sans, Lato, Poppins, Montserrat, Geist, Space Grotesk, Manrope, DM Sans, Instrument Serif, or `system-ui` as a primary face.
+- **Colour:** VibeCode purple/indigo/violet in any form; Tailwind blue `#3b82f6`; gradient text on headings.
+- **Provenance:** `<meta name="generator">`; builder hosts (`lovable.app`, `bolt.new`, `v0.dev`, `.framer.app`); client-side calls to `api.anthropic.com` / `api.openai.com`; API-key literals; `localhost` references shipped to production.
+- **Layout:** three identical cards in a row; centred everything; equal-weight card grids; nested cards; `01/02/03` step rhythm; fake-precision stat banners (`99.9%`, `10k+`); sparkle / "Now in Beta" pills; bento grids.
+- **Copy:** seamless, cutting-edge, transform your, unlock the power, elevate your, revolutionise, supercharge, delve, tapestry.
+
+**The stack is the tell, not the item.** One of these is a choice; five together is a fingerprint.
+
+**And the trap:** obeying every rule in this file is no longer sufficient. The 2026 generated default *is* restraint — warm ground, hairlines, tracked micro-labels, one muted accent. That describes this system. `ANTI-TEMPLATE.md` §3 names the overlap honestly; §4 is what closes it — a written Design Read, a named real reference, one dominant element per section, no 50/50 splits, and line weights that differ by role.
+
+---
+
 ## 7. The Checklist — run before shipping
 
 ```
@@ -126,6 +142,12 @@ Direct. True. Economical — cut every word that carries no freight, as if you p
 □ VOICE: direct, true, economical, unpretentious — and still alive?
 □ LEGIBILITY: contrast passes? Not signaling by color alone?
 □ INEVITABILITY: could the user imagine no rational alternative?
+□ DESIGN READ: one sentence in context.md, specific to this surface — not reusable on any other?
+□ REFERENCE: a named real artifact (Braun ET66, the 1972 Vignelli diagram, moma.org), not an adjective?
+□ DOMINANCE: which single element dominates each section? Name it.
+□ LINE WEIGHTS: do rules differ by role, or is everything a uniform 1px?
+□ THE STACK: would a stranger place this among thirty agent-generated sites?
+□ AUDIT: `axiom-audit . --strict` exits 0 — and `axiom-audit dist` is clean too?
 ```
 
 ---

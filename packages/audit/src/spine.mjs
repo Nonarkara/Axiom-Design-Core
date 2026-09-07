@@ -68,9 +68,21 @@ export const SPINE_BANS = {
       re: /\b(?:api\.anthropic\.com|api\.openai\.com|generativelanguage\.googleapis\.com)\b/g, paths: CLIENT_PATH,
       msg: 'Model API called from a path that ships to the browser. That publishes the key. Proxy it server-side.',
     },
-    { re: /\b(?:localhost|127\.0\.0\.1)(?::\d+)?\b/g, paths: CLIENT_PATH, msg: 'localhost in shipped source. It resolves to the visitor\'s machine, not yours.', severity: 'warn' },
+    { re: /https?:\/\/(?:localhost|127\.0\.0\.1):\d+/g, msg: 'Dev-server reference. If this ships it is a production tell, and usually a broken link.' },
+    // Scheme-qualified dev-server URLs are the rule above; this one is the bare
+    // host, so the `//` lookbehind keeps a single line from reporting twice.
+    { re: /(?<!\/\/)\b(?:localhost|127\.0\.0\.1)(?::\d+)?\b/g, paths: CLIENT_PATH, msg: 'localhost in shipped source. It resolves to the visitor\'s machine, not yours.', severity: 'warn' },
     { re: /\bcontinue-on-error\s*:\s*true/g, msg: 'continue-on-error turns a red gate green. A check that cannot fail is not a check.', severity: 'warn' },
     { re: /\b(?:npm|pnpm|yarn)\s+(?:run\s+)?test[^\n|&]*\|\|\s*true/g, msg: '`|| true` on a test step makes the build lie. Remove it.' },
+  ],
+
+  /** Origin tells visible in View-Source (PR #3, §14.2.2). The visual half of
+   *  this layer — template fonts, slop palettes, layout and copy reflexes — is
+   *  in bans.mjs. The key-literal and client-side-vendor-call rules PR #3 also
+   *  carried are `secrets` and `exposure` above; there is one copy of each. */
+  provenance: [
+    { re: /<meta[^>]+name=["']generator["'][^>]*>/gi, msg: 'Generator meta tag names the tool that built this. Remove it.' },
+    { re: /\b(?:lovable\.app|bolt\.new|v0\.dev|\.framer\.app|builder\.io)\b/gi, msg: 'Builder-platform host left in the source. Remove it.' },
   ],
 };
 

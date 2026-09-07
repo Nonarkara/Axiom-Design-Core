@@ -12,8 +12,8 @@
    • Green retired — absence of red is the good news
    ============================================================ */
 
-/* Google Fonts — Inter + Spectral */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+/* Google Fonts — Source Sans 3 + Spectral (Inter removed 2026-09-08) */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 :root {
 
@@ -62,7 +62,10 @@
   --rt-brown:  #996633;  /* glyph: #fff  */
 
   /* ── §5 Typography ──────────────────────────────────────── */
-  --font-sans:  'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Inter removed 2026-09-08 — the most-cited tell of agent-generated
+     design. Source Sans 3 is the workspace canonical UI face.
+     See ANTI-TEMPLATE.md §2.1. */
+  --font-sans:  'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
   --font-mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 
