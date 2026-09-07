@@ -1,0 +1,25 @@
+{
+  "name": "@axiom-design/tailwind-preset",
+  "version": "0.1.0",
+  "description": "Tailwind preset that maps Axiom Design tokens and removes the hard-banned utilities so developers cannot accidentally smuggle in template chrome.",
+  "type": "module",
+  "main": "./src/preset.mjs",
+  "exports": {
+    ".": "./src/preset.mjs"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^3.4.0 || ^4.0.0"
+  },
+  "keywords": [
+    "tailwind",
+    "design-system",
+    "axiom",
+    "rams",
+    "nycta"
+  ],
+  "license": "MIT"
+}

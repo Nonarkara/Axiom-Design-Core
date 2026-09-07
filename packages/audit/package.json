@@ -1,0 +1,29 @@
+{
+  "name": "@axiom-design/audit",
+  "version": "0.1.0",
+  "description": "Audit any project for Axiom / Rams × NYCTA hard-bans. Catches the template-looking patterns before they ship.",
+  "type": "module",
+  "bin": {
+    "axiom-audit": "./bin/axiom-audit.mjs"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "audit": "node ./bin/axiom-audit.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "design-system",
+    "audit",
+    "lint",
+    "axiom",
+    "rams",
+    "nycta"
+  ],
+  "license": "MIT"
+}

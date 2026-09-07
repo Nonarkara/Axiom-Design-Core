@@ -17,7 +17,7 @@ The floating HUD, palettes, type samples, spacing ladder, radius chips, and comp
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot, or anything that will read a file. The 5-line spine is [`AGENTS.md`](AGENTS.md). Install steps for each agent type are in [`USAGE.md`](USAGE.md). The full law is [`AXIOM-DNA.md`](AXIOM-DNA.md) (v2.1, Living Edition).
+Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot, or anything that will read a file. The 5-line spine is [`AGENTS.md`](AGENTS.md). Install steps for each agent type are in [`USAGE.md`](USAGE.md). The full law is [`AXIOM-DNA.md`](AXIOM-DNA.md) (v2.1, Living Edition). The operational layer in this tree is **v2.2**.
 
 ---
 
@@ -36,7 +36,9 @@ Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Wi
 
 This repository is the **public design core** for Axiom X Co., Ltd. It is a drop-in operating standard: tokens, modes, bans, a live component gallery, and the DNA any agent needs to ship a surface that looks Axiom-correct on the first pass.
 
-It is **not** a dashboard, **not** a client production stack, **not** an `npm` component library, and **not** a secret intelligence platform. The site at [axiom.nonarkara.org](https://axiom.nonarkara.org) is a sibling product ([Nonarkara/Axiom](https://github.com/Nonarkara/Axiom)). This repo is the grammar that product — and the civic systems around it — are supposed to speak.
+**v2.2** adds source under `packages/`: React 19 components, an audit CLI, and a Tailwind preset. The five-minute dashboard recipe is [`WIRE-IN.md`](WIRE-IN.md).
+
+It is **not** a dashboard, **not** a client production stack, and **not** a secret intelligence platform. The site at [axiom.nonarkara.org](https://axiom.nonarkara.org) is a sibling product ([Nonarkara/Axiom](https://github.com/Nonarkara/Axiom)). This repo is the grammar that product — and the civic systems around it — are supposed to speak.
 
 **Axiom X design / civic product language** means:
 
@@ -49,6 +51,7 @@ It is **not** a dashboard, **not** a client production stack, **not** an `npm` c
 |---|---|
 | An **AI agent** | [`AGENTS.md`](AGENTS.md) — the 5-line DNA |
 | **Installing** in a project | [`USAGE.md`](USAGE.md) — one-shot, project, or global |
+| Wiring a **React / Vite dashboard** | [`WIRE-IN.md`](WIRE-IN.md) — packages + CI recipe |
 | Looking for the **full law** | [`AXIOM-DNA.md`](AXIOM-DNA.md) — 22 sections, every rule, every code example |
 | A **human** wanting a drop-in sheet | This README, then [`tokens.css`](tokens.css) |
 
@@ -134,7 +137,7 @@ Honesty over polish: show provenance, dates, delay, uncertainty. Never touch the
 
 ## How it works
 
-No framework. No bundler. No build step. Read the spine, import the tokens, do not invent variants.
+The HTML path has no root bundler and no root build step: read the spine, import the tokens, do not invent variants. v2.2 adds optional TypeScript packages under `packages/` for dashboards that already run React 19 / Vite.
 
 ```mermaid
 flowchart LR
@@ -151,9 +154,13 @@ flowchart LR
 | [`CLAUDE.md`](CLAUDE.md) | Claude Code entry. Same law, agent-specific pointer order. |
 | [`AXIOM-DNA.md`](AXIOM-DNA.md) | Full operating standard. 22 sections. Motion craft is §13 (v2.1). |
 | [`USAGE.md`](USAGE.md) | Install path per agent: one-shot, project-wide, global. |
+| [`WIRE-IN.md`](WIRE-IN.md) | Five-minute install + CI recipe for a React / Vite dashboard. |
 | [`tokens.css`](tokens.css) | Drop-in CSS variables. Inter + Spectral. Hairline grid utilities. |
 | [`components.html`](components.html) | Live rendered gallery. Open in a browser. Reference; do not invent. |
 | [`quick-start.html`](quick-start.html) | Minimal Instrument-mode page. Clone and edit. |
+| [`packages/react/`](packages/react/README.md) | React 19 + TypeScript components. Package name in-tree: `@axiom-design/core-react`. |
+| [`packages/audit/`](packages/audit/README.md) | Hard-ban scanner CLI. Package name in-tree: `@axiom-design/audit`. |
+| [`packages/tailwind-preset/`](packages/tailwind-preset/README.md) | Tailwind preset that maps tokens and removes banned utilities. |
 | [`docs/hero-banner.png`](docs/hero-banner.png) | README illustration. HUD is drawn, not captured. |
 | [`assets/photos/`](assets/photos/) | Eight concept sheets (`axiom-concept-01` … `08`). Diagrams of the system, not product screenshots. |
 | [`LICENSE`](LICENSE) | MIT. Copyright © 2026 Non Arkaraprasertkul / Axiom X Co., Ltd. |
@@ -166,6 +173,7 @@ flowchart LR
 | Concept sheets (`assets/photos/axiom-concept-*.png`) | Documentation diagrams of modes, color, grid, interaction. |
 | [`components.html`](components.html) | Real HTML/CSS gallery using `tokens.css`. Open locally. Not deployed as a product from this repo. |
 | [`tokens.css`](tokens.css) | The actual token sheet. This is the source of truth for color, type, space, and motion. |
+| `packages/` | Source in this tree. Not a running dashboard. Wire-in steps: [`WIRE-IN.md`](WIRE-IN.md). |
 | axiom.nonarkara.org | Sibling site. Separate repository. Not built by a script in *this* tree. |
 
 The hairline cell grid — the signature Instrument move:
@@ -183,7 +191,7 @@ Hard bans (non-negotiable): gradients, drop shadows, glows, blurs, glassmorphism
 
 ## How to use
 
-You do not need Docker, a database, an API key, or a cloud account. There is no `package.json` in this tree, so `npm run dev` has nothing to bind to.
+You do not need Docker, a database, an API key, or a cloud account. There is **no root `package.json`**, so `npm run dev` at the repository root has nothing to bind to. Package manifests live under `packages/` only.
 
 ### One-shot — any agent, any project
 
@@ -219,7 +227,17 @@ Core tokens (the rest, including motion curves, live in the file):
 }
 ```
 
-Open [`components.html`](components.html) and [`quick-start.html`](quick-start.html) in a browser from this folder. That is the gallery and the template. Nothing in this repository starts a server.
+Open [`components.html`](components.html) and [`quick-start.html`](quick-start.html) in a browser from this folder. That is the gallery and the template. Nothing at the repository root starts a server.
+
+### Operational layer — React dashboard
+
+v2.2 ships three in-tree packages. The install and CI recipe is [`WIRE-IN.md`](WIRE-IN.md).
+
+- [`packages/react/`](packages/react/README.md) — `@axiom-design/core-react`
+- [`packages/audit/`](packages/audit/README.md) — `npx axiom-audit ./apps/web` (`--strict` for CI)
+- [`packages/tailwind-preset/`](packages/tailwind-preset/README.md) — maps tokens and removes banned utilities
+
+The philosophy in [`AGENTS.md`](AGENTS.md) and [`AXIOM-DNA.md`](AXIOM-DNA.md) is unchanged. v2.2 puts code on top of it.
 
 ### Persistent install
 
