@@ -2,6 +2,10 @@
 
 > You are Claude Code. This file is loaded automatically when you `cd` into the Axiom Design Core directory, or when the file is symlinked into a project's `.claude/` or root.
 
+> **Read [`BUILDER.md`](BUILDER.md) first.** That file is the method — how the work gets
+> made. This file is the law — what a correct surface looks like. Obeying the law without
+> the method produces compliant work that is still the wrong thing.
+
 ## Read in this order
 
 1. **`AGENTS.md`** — the 5-line DNA. The spine. Most of your work can be correct after this single file.

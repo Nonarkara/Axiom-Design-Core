@@ -19,6 +19,12 @@ The floating HUD, palettes, type samples, spacing ladder, radius chips, and comp
 
 Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot, or anything that will read a file. The 5-line spine is [`AGENTS.md`](AGENTS.md). Install steps for each agent type are in [`USAGE.md`](USAGE.md). The full law is [`AXIOM-DNA.md`](AXIOM-DNA.md) (v2.1, Living Edition). The operational layer in this tree is **v2.2**.
 
+> **Before the rules — [`BUILDER.md`](BUILDER.md): how this repository expects you to work.**
+> Build something rough enough to tear apart. Imagine a human doing the job before you
+> prompt an agent to do it. Give the agent the real source material, not a description of
+> it. Test, because a hypothesis proves nothing. Have a second, different agent look for
+> the flaw. The law in this repository is the floor, not the work.
+
 ---
 
 ## Contents

@@ -4,6 +4,10 @@
 
 This file is the **5-line spine**. Drop it into any agent's context, ask for any artifact (dashboard, slide, infographic, document, game, narrative, slide-deck, email), and produce something that looks Axiom-correct on the first pass.
 
+> **Read [`BUILDER.md`](BUILDER.md) first.** That file is the method — how the work gets
+> made. This file is the law — what a correct surface looks like. Obeying the law without
+> the method produces compliant work that is still the wrong thing.
+
 ---
 
 ## 1. The Equation
