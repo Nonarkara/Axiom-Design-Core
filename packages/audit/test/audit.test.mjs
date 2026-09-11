@@ -32,6 +32,13 @@ function audit(target, ...flags) {
   }
 }
 
+function findings(layer, fileRe) {
+  return (audit(fixture).findings || [])
+    .filter((f) => f.layer === layer && (!fileRe || fileRe.test(f.file)))
+    .map((f) => f.msg)
+    .join('\n');
+}
+
 test('the design core passes its own audit', () => {
   const r = audit(repo);
   assert.equal(r.errors, 0, `design core must obey its own canon:\n${(r.findings || []).map((f) => `  ${f.file}:${f.line} ${f.msg}`).join('\n')}`);
@@ -81,6 +88,64 @@ test('seam layer: a header produced and never read, and one read and never produ
 test('seam layer computes contrast rather than trusting the comment', () => {
   const msgs = (audit(fixture).findings || []).filter((f) => f.layer === 'seam').map((f) => f.msg).join('\n');
   assert.match(msgs, /--ink-2 on --paper is 1\.\d+:1, below the §19 floor/);
+});
+
+/* ── Origin tells (PR #3) ──────────────────────────────────────────────────
+ * The bans above catch decoration; these catch provenance. Pinned the same way
+ * as the rest: src/tells.html in the fixture carries the whole stack, one line
+ * per tell, so a rule that stops firing fails here instead of shipping.
+ */
+
+test('origin tells: template fonts, slop palette, gradient text', () => {
+  const msgs = findings('front', /^src\/tells\.html$/);
+  assert.match(msgs, /Banned template font in a Google Fonts URL/);
+  assert.match(msgs, /Banned template font\. These are the faces/);
+  assert.match(msgs, /VibeCode purple/);
+  assert.match(msgs, /Tailwind default blue/);
+  assert.match(msgs, /Gradient text on headings/);
+});
+
+test('origin tells: the View-Source layer lives in the back half, once', () => {
+  const all = audit(fixture).findings || [];
+  const msgs = all.map((f) => f.msg).join('\n');
+  assert.match(msgs, /Generator meta tag names the tool/);
+  assert.match(msgs, /Builder-platform host left in the source/);
+  assert.match(msgs, /Dev-server reference/);
+  // PR #3 carried key literals and client-side vendor calls too; spine.mjs
+  // already owned both. One copy of each, or a clean file reports twice.
+  for (const re of [/Anthropic key literal/, /publishes the key/, /Dev-server reference/]) {
+    assert.equal(all.filter((f) => re.test(f.msg)).length, 1, `duplicated rule: ${re}`);
+  }
+});
+
+test('a dev-server URL is one finding, not a URL plus a bare-host warning', () => {
+  const hits = (audit(fixture).findings || []).filter((f) => /localhost/.test(f.match || ''));
+  assert.equal(hits.length, 1);
+  assert.equal(hits[0].severity, 'error');
+});
+
+test('origin tells: layout and copy reflexes are warnings — the writer decides', () => {
+  const hits = (audit(fixture).findings || []).filter((f) => ['layout', 'copy'].includes(f.rule));
+  assert.ok(hits.length >= 6);
+  assert.ok(hits.every((f) => f.severity === 'warn'), 'a judgment call must not fail a build');
+  const msgs = hits.map((f) => f.msg).join('\n');
+  for (const re of [/Three-equal-card row/, /Centred content/, /Bento grid/, /Sparkle\/beta pill/, /Fake-precision stat banner/, /Buzzword tell/]) {
+    assert.match(msgs, re);
+  }
+});
+
+test('easing is judged on the y params positionally — y1 undershoot is caught', () => {
+  const msgs = findings('front', /^src\/tells\.html$/);
+  assert.match(msgs, /y1 outside 0\.\.1/, 'cubic-bezier(0.4, -0.5, 0.6, 1) is undershoot at y1');
+  assert.match(msgs, /y2 outside 0\.\.1/, 'cubic-bezier(0.4, 0, 0.6, 1.8) is overshoot at y2');
+  const legal = (audit(fixture).findings || []).filter((f) => /0\.23, 1, 0\.32, 1/.test(f.match || ''));
+  assert.equal(legal.length, 0, 'y === 1 is an ordinary fast-out curve, not overshoot');
+});
+
+test('weight 700 stays legal and 800+ stays an error, in a dirty file too', () => {
+  const weights = (audit(fixture).findings || []).filter((f) => /font weight/i.test(f.msg));
+  assert.equal(weights.length, 1, 'only the 900 declaration is a finding');
+  assert.match(weights[0].match, /900/);
 });
 
 test('a waiver without a reason is itself a finding', () => {

@@ -4,8 +4,8 @@ Audits a project against **both halves** of the Axiom core in one pass.
 
 | Layer | Source | Checks |
 |---|---|---|
-| `front` | `AXIOM-DNA.md` | radius, shadow, gradient, blur, palette, weights, arrows, motion, pure `#000`/`#fff` |
-| `back` | `AXIOM-SPINE.md` | secret literals, fabricated data on a data path, empty catch, SQL interpolation, model keys in client bundles, green-washed gates |
+| `front` | `AXIOM-DNA.md`, `ANTI-TEMPLATE.md` | radius, shadow, gradient, blur, palette, weights, arrows, motion, pure `#000`/`#fff`, and the origin tells: template fonts, slop palette, gradient text, layout and copy reflexes |
+| `back` | `AXIOM-SPINE.md` | secret literals, fabricated data on a data path, empty catch, SQL interpolation, model keys in client bundles, green-washed gates, and the View-Source origin tells: generator meta tags, builder hosts, dev-server URLs |
 | `seam` | `AXIOM-SPINE.md §9` | `tokens.css` contrast vs `§19` (computed), provenance headers produced vs consumed, token drift, eyebrow ratio |
 
 ```bash
@@ -13,6 +13,7 @@ npx axiom-audit .                  # advisory — reports, exits 0
 npx axiom-audit . --strict         # CI — exits 2 on errors
 npx axiom-audit . --json           # machine-readable
 npx axiom-audit . --no-seam        # per-line layers only
+npx axiom-audit dist               # built output — the provenance tells live in the bundle
 ```
 
 **Exit codes** — an operational failure and a design finding are different

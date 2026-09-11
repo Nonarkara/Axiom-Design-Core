@@ -41,7 +41,8 @@ These are what every model reaches for. Inter is the worst offender because it i
 
 ### 2.3 Provenance — visible in View-Source, invisible in a screenshot
 
-This layer is new and nothing in the estate checked it before:
+Two of these — key literals and client-side vendor calls — are `AXIOM-SPINE.md`
+§7 and §8, and the back half enforces them. The other three were unchecked:
 
 - `<meta name="generator">` naming the builder.
 - Builder hosts left in source: `lovable.app`, `bolt.new`, `v0.dev`, `.framer.app`.
@@ -141,7 +142,7 @@ A widely-circulated anti-slop prompt advises *"prefer atmosphere — subtle text
 ```bash
 npx axiom-audit .            # source
 npx axiom-audit dist         # built output — the provenance layer lives here
-npx axiom-audit . --strict   # CI: exit 1 on errors
+npx axiom-audit . --strict   # CI: exit 2 on errors (1 = the scan could not run)
 ```
 
 `error` = unambiguous violation, fails CI. `warn` = judgment call, a human decides.

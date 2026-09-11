@@ -1,0 +1,22 @@
+<!-- Origin-tell fixture (PR #3). Every line here is deliberately wrong: the
+     stack of defaults that lets a stranger identify a page as agent-generated.
+     Kept in the dirty fixture, not the repo, so the self-audit stays clean. -->
+<meta name="generator" content="SomeBuilder 1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<a href="https://myproject.lovable.app">live</a>
+<script src="http://localhost:5173/@vite/client"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .accent { color: #6366f1; border-color: #3b82f6; }
+  h1 { background-clip: text; -webkit-background-clip: text; }
+  .label { font-weight: 700; }   /* legal — §6.2 mandates it for the label role */
+  .shout { font-weight: 900; }   /* error — the scale tops out at 700 */
+  .in  { transition: opacity 200ms cubic-bezier(0.4, -0.5, 0.6, 1); }
+  .out { transition: opacity 200ms cubic-bezier(0.4, 0, 0.6, 1.8); }
+  .ok  { transition: opacity 200ms cubic-bezier(0.23, 1, 0.32, 1); }
+</style>
+<div class="bento grid-cols-3 text-center">
+  <span>Now in Beta</span>
+  <b>99.9%</b>
+  <p>Seamlessly transform your workflow with cutting-edge AI.</p>
+</div>

@@ -1,5 +1,12 @@
 name: axiom
+
+# The gate only works if it runs without being remembered. A manual command
+# drifts back to being ignored — which is the failure this audit exists to catch.
 on: [push, pull_request]
+
+permissions:
+  contents: read
+
 jobs:
   core:
     runs-on: ubuntu-latest

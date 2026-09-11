@@ -49,7 +49,12 @@ export function formatReport({ files, findings, errors, warnings, root, strict, 
     lines.push('');
   }
 
-  if (strict) {
+  // A clean strict run said "Strict mode — build fails." over 0 errors, which
+  // is the same species of lie --strict itself used to tell. The footer now
+  // reports the outcome it actually produced.
+  if (strict && errors === 0) {
+    lines.push(c(DIM, `0 errors, ${warnings} warning(s). Strict mode — passing.`));
+  } else if (strict) {
     lines.push(c(RED, `${errors} error(s) found. Strict mode — build fails.`));
   } else {
     lines.push(c(YELLOW, `${errors} error(s), ${warnings} warning(s) found. Advisory mode — exiting 0. Run with --strict to fail the build.`));
