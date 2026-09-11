@@ -43,7 +43,7 @@ pair against `§19` instead of trusting the prose, and exits 2 on errors.
 
 | Mode | When | Type | Color | Corners | Density |
 |---|---|---|---|---|---|
-| **Instrument** | They operate (dashboards, systems, infographics, live tools) | Inter only | grey + blue identity + one red spike | square (0–2 px) | max |
+| **Instrument** | They operate (dashboards, systems, infographics, live tools) | Source Sans 3 only | grey + blue identity + one red spike | square (0–2 px) | max |
 | **Editorial** | They read/think (documents, CVs, essays, reports, decks) | Spectral serif permitted | grey + one accent | square | 60–72 ch measure |
 | **Play** | They learn (board/card/flashcard games, workbooks) | either | trunk subsystem permitted | Sato mercy-radius OK | generous, hand-scale |
 

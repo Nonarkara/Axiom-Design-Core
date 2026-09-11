@@ -4,8 +4,15 @@
 > **[`AXIOM-SPINE.md`](AXIOM-SPINE.md)** — the response envelope, the
 > `{source, tier, age}` honesty contract, trust boundaries, secrets, and the
 > seam. `§20`'s ban on *data without provenance* is unenforceable from inside a
-> stylesheet; the spine is where it becomes a check. Both halves are audited by
-> one command: `npx axiom-audit . --strict`.
+> stylesheet; the spine is where it becomes a check.
+>
+> **Read [`ANTI-TEMPLATE.md`](ANTI-TEMPLATE.md) before this file, not after.**
+> This DNA says what is correct. That file says why correct alone stopped
+> being enough once restraint became the generated default too — and it is
+> the reason `--font-sans` below is Source Sans 3, not Inter.
+>
+> Both halves, plus the origin-tell registry, are audited by one command:
+> `npx axiom-audit . --strict`.
 
 > **For:** Axiom — decision systems for cities, governments, and operators. axiom.nonarkara.org
 > **Use:** Throw this document at any agent — slide-maker, infographic-maker, dashboard-builder, system-builder, document-writer. It contains everything that agent needs to produce a correct Axiom design: static or interactive, gamified or narrative-driven.
@@ -29,7 +36,7 @@ THE EQUATION: MoMA Law × Golden Section × The Divine Move.
 - The Divine Move: exactly ONE bold gesture per surface — the one the function already demanded, executed full-size in pure form, until it looks inevitable rather than daring. Never two. Two is noise.
 
 THREE MODES — pick by the human's act:
-- INSTRUMENT (they operate): Inter, greyscale field, blue identity, one red spike. Hairline cell grids. Square corners. Max density, zero decoration. Feedback under 100ms — the Lined Glass: state read at a glance, never measured. This is dashboards, systems, infographics.
+- INSTRUMENT (they operate): Source Sans 3, greyscale field, blue identity, one red spike. Hairline cell grids. Square corners. Max density, zero decoration. Feedback under 100ms — the Lined Glass: state read at a glance, never measured. This is dashboards, systems, infographics.
 - EDITORIAL (they read/think): Spectral serif permitted. Generous measure. Callout boxes for quotes. Warmth allowed. Still MoMA Law, still one accent. This is documents, CVs, essays, reports, decks-as-argument.
 - PLAY (they learn): tactile, physical-first (cards, boards, flashcards). Sato-warmth: rounded edges permitted where they calm or invite a human. More color from the trunk subsystem for piece identity. Still grid, still Golden Section underneath.
 
@@ -40,7 +47,7 @@ COLOR (Thai flag — meaning encoded):
 - Grey is the quiet between: warm near-black ink #191712 down through a warm grey ramp.
 - Green retired. Normal/positive data needs no color — the absence of red is the good news. Color appears only at the exception.
 
-TYPE: Inter (instrument/UI), Spectral (editorial/reading). Tabular figures. Weight ceiling 600 for data — restraint reads as confidence; heavy weights read as panic. The smaller the text, the wider the tracking. Labels: small, letterspaced, uppercase, grey. Baseline-aligned everywhere.
+TYPE: Source Sans 3 (instrument/UI), Spectral (editorial/reading). Tabular figures. Weight ceiling 600 for data — restraint reads as confidence; heavy weights read as panic. The smaller the text, the wider the tracking. Labels: small, letterspaced, uppercase, grey. Baseline-aligned everywhere.
 
 VOICE (Hemingway + Bukowski): Direct. True. Economical — cut every word that carries no freight, as if you paid by the word to send it. Short declaratives. Active voice. Numbers over adjectives. No academic hedging, no pretension, no complexity worn as a costume for intelligence. Directness is not boredom: build the labyrinth, then land the twist. Sound smart by being clear. No exclamation marks. No emoji.
 
@@ -177,7 +184,7 @@ One spine. Three registers. Pick the mode by the human's *act*, not by taste.
 |---|---|---|---|
 | **The human is** | operating | reading / thinking | learning / playing |
 | **Artifacts** | dashboards, systems, infographics, live tools | documents, CVs, essays, reports, decks-as-argument, novels | board/card/flashcard games, workbooks, kits |
-| **Type** | Inter, neo-grotesque only | Spectral serif permitted, Inter for labels | either, set for tactility |
+| **Type** | Source Sans 3, neo-grotesque only | Spectral serif permitted, Source Sans 3 for labels | either, set for tactility |
 | **Color** | greyscale + blue identity + one red spike | greyscale + one accent | trunk subsystem permitted for piece identity |
 | **Corners** | square (0–2px) | square | **Sato mercy-radius permitted** |
 | **Density** | maximum | reading measure (60–72ch) | generous, hand-scale |
@@ -200,13 +207,14 @@ One spine. Three registers. Pick the mode by the human's *act*, not by taste.
 | `--panel` | `#ffffff` | Cells, instrument faces |
 | `--ink` | `#191712` | Primary text, bars, active — warm near-black |
 | `--ink-2` | `#6f6c63` | Secondary text |
-| `--ink-3` | `#a9a59a` | Tertiary, labels, meta |
+| `--ink-3` | `#918e84` | Tertiary, labels, meta |
 | `--line` | `#e7e5dd` | Hairlines, grid gaps, inactive tracks |
 | `--line-2` | `#d2cfc5` | Stronger borders, dividers |
 | `--blue` | `#26243F` | **The law.** Identity, structure. Enclosed. |
 | `--red` | `#A8322B` | **The Move.** Live, critical, decision, negative. Bare. |
 
 > **Warmth rule:** neutrals are warm (a trace of yellow/red), never cool blue-grey. Pure black and pure white are banned.
+> `--panel` is the stated exception, unresolved on purpose: `#ffffff` sits one row above this note. A white instrument face on warm paper is plausibly the intended two-tone rather than an accident, so it is left as-is and waived with a reason in `tokens.css` rather than silently exempted or silently fixed. Either this rule gains a stated exception for `--panel`, or `--panel` stops being pure white — that is a design call, named here rather than guessed.
 >
 > **The exception rule (Rams + Vignelli):** color appears only at the exception. Normal is grey. Identity is blue. The one spike is red. If a thing is *fine*, it stays grey — the absence of red is the good news.
 
@@ -254,10 +262,10 @@ Focus = a 1px border darken (`--line-2` → `--ink`, or → `--blue`). No glow, 
 
 ### 6.1 Families
 
-**Instrument / UI — Inter** (neo-grotesque, Helvetica lineage; the Mondaine and NYCTA voice; free, runs everywhere including PowerPoint, Gamma, email, print).
+**Instrument / UI — Source Sans 3** (neo-grotesque, Helvetica lineage; free, runs everywhere including PowerPoint, Gamma, email, print. Inter was here until 2026-09-08 — see §13.5.)
 
 ```css
-font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-family: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 font-variant-numeric: tabular-nums;
 -webkit-font-smoothing: antialiased;
 ```
@@ -270,7 +278,7 @@ font-family: 'Spectral', Georgia, 'Times New Roman', serif;
 
 **Premium tier (when licensing is available):** Helvetica Now (instrument) and a high-contrast Didone for editorial display. The free pair is the default so the system runs anywhere — that is the point.
 
-**Platform fallbacks:** PowerPoint / Google Slides — embed Inter and Spectral if the platform allows; else Arial/Helvetica and Georgia. Email — system stack. Never substitute a rounded or display face.
+**Platform fallbacks:** PowerPoint / Google Slides — embed Source Sans 3 and Spectral if the platform allows; else Arial/Helvetica and Georgia. Email — system stack. Never substitute a rounded or display face.
 
 ### 6.2 Type Scale (do not improvise)
 
@@ -385,7 +393,7 @@ Axiom = a self-evident first principle. The mark must read as a *given*: stable,
 
 ### 9.2 The Grammar
 
-- **The wordmark:** `AXIOM` set in Inter, weight 600, tracking tuned per size, lowercase-height optical balance. Square corners. No ligature theatrics.
+- **The wordmark:** `AXIOM` set in Source Sans 3, weight 600, tracking tuned per size, lowercase-height optical balance. Square corners. No ligature theatrics.
 - **The Move, built in:** one red element — a single red disc or a red counter inside the `O`/`A` — the Mondaine second-hand idea. One red dot in an otherwise calm mark. The spike is the brand.
 - **The disc atom:** a perfect blue disc with a white glyph is the identity unit (see §11). The black/ink hub disc is "home."
 - **Construction:** built on a φ grid. Disc diameter to cap-height in φ. Wordmark length to mark height in φ. Clear space = one disc-diameter on every side.
@@ -645,9 +653,11 @@ Editorial and Play modes may spend **one** entrance per surface under the ordina
 
 ### 13.5 The templated-ness risk — read this before you copy this file again
 
-Independent AI-slop audits (impeccable's detector, run against thousands of generated interfaces) now flag **warm cream/beige page grounds** and **Inter** as recognizable tells of AI-generated design — not because either choice is wrong, but because so many systems reached for the same "safe, tasteful" default that the default became the tell. Axiom's `--paper: #f6f5f2` and `--font-sans: Inter` are exactly that palette and that face.
+Independent AI-slop audits (impeccable's detector, run against thousands of generated interfaces) flag **warm cream/beige page grounds** and **Inter** as recognizable tells of AI-generated design — not because either choice is wrong on its own, but because so many systems reached for the same "safe, tasteful" default that the default became the tell.
 
-This is not a reason to rip out either token. Inter is chosen here for a real, load-bearing reason — it runs everywhere, including PowerPoint and email, which is the whole point of a system meant to survive contact with a client's toolchain. The response is not novelty for its own sake. It is:
+**This system was one of them.** `--font-sans` was `'Inter'` until 2026-09-08 — Axiom's `--paper: #f6f5f2` plus Inter is exactly the palette-and-face pair those audits name. Inter's practical case (runs everywhere, including PowerPoint and email) was real. It was not enough: a face this widely cited stops signaling "chosen" the instant it signals "generated," and the load-bearing reason does not survive contact with that fact. `--font-sans` is now `'Source Sans 3'`.
+
+The full tell registry — colour, provenance (View-Source, not just screenshot), layout reflexes, copy — is `ANTI-TEMPLATE.md`, and it is the canonical treatment now; this section stays scoped to what is specific to motion. The cream ground stays, named as an open tension rather than resolved by fiat — swapping it for novelty would be the same failure in the other direction (`ANTI-TEMPLATE.md §3`). What actually differentiates a surface that obeys every rule in this file:
 
 - **The Divine Move stays rare and real.** A generic template never commits to one true oversized gesture — it hedges with several medium ones. Axiom's one-per-surface rule is the actual differentiator; audit it honestly, every time (§22.2).
 - **Motion craft is now part of the spine**, not an afterthought. Flat easing and no press feedback are themselves slop tells (§13.3-4) — precision here is free distinctiveness that costs nothing in restraint.
@@ -774,7 +784,7 @@ How each agent applies this DNA. Throw the document; read your section.
 ### 18.1 Slide / PowerPoint / Gamma Agent → Editorial mode
 
 - One idea per slide. The slide is an argument step, not a bucket of bullets.
-- Title as a station plate: blue disc + short title + thin rule. Body in Spectral or Inter, large, few words.
+- Title as a station plate: blue disc + short title + thin rule. Body in Spectral or Source Sans 3, large, few words.
 - φ split for two-column slides (61.8 / 38.2), never 50/50.
 - A claim carries a number or a chart, never an adjective. One chart per slide, framed, never touched.
 - Where a deck makes a case (a talk, a pitch), distill to **three key takeaways** — three, not two, not four.
@@ -898,10 +908,10 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 
 ```html
 <div style="--paper:#f6f5f2; --panel:#fff; --ink:#191712; --ink-2:#6f6c63;
-            --ink-3:#a9a59a; --line:#e7e5dd; --line-2:#d2cfc5;
+            --ink-3:#918e84; --line:#e7e5dd; --line-2:#d2cfc5;
             --blue:#26243F; --red:#A8322B;
             background:var(--paper); color:var(--ink);
-            font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+            font-family:'Source Sans 3','Helvetica Neue',Helvetica,Arial,sans-serif;
             font-variant-numeric:tabular-nums; font-size:13px; line-height:1.42;
             -webkit-font-smoothing:antialiased;">
   …

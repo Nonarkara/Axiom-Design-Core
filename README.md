@@ -106,7 +106,7 @@ Pick the **mode** by the human's act, not by taste.
 |---|---|---|---|
 | **Human is** | operating | reading / thinking | learning / playing |
 | **Artifacts** | dashboards, systems, infographics, live tools | documents, CVs, essays, reports, decks | board/card/flashcard games, workbooks |
-| **Type** | Inter only | Spectral serif permitted | either |
+| **Type** | Source Sans 3 only | Spectral serif permitted | either |
 | **Color** | grey + blue identity + one red spike | grey + one accent | trunk subsystem permitted |
 | **Corners** | square (0–2 px) | square | Sato mercy-radius permitted |
 | **Density** | maximum | 60–72 ch measure | generous, hand-scale |
@@ -177,7 +177,7 @@ flowchart LR
 | [`AXIOM-DNA.md`](AXIOM-DNA.md) | Full operating standard. 22 sections. Motion craft is §13 (v2.1). |
 | [`USAGE.md`](USAGE.md) | Install path per agent: one-shot, project-wide, global. |
 | [`WIRE-IN.md`](WIRE-IN.md) | Five-minute install + CI recipe for a React / Vite dashboard. |
-| [`tokens.css`](tokens.css) | Drop-in CSS variables. Inter + Spectral. Hairline grid utilities. |
+| [`tokens.css`](tokens.css) | Drop-in CSS variables. Source Sans 3 + Spectral. Hairline grid utilities. |
 | [`components.html`](components.html) | Live rendered gallery. Open in a browser. Reference; do not invent. |
 | [`quick-start.html`](quick-start.html) | Minimal Instrument-mode page. Clone and edit. |
 | [`packages/react/`](packages/react/README.md) | React 19 + TypeScript components. Package name in-tree: `@axiom-design/core-react`. |
@@ -239,12 +239,12 @@ Core tokens (the rest, including motion curves, live in the file):
   --panel: #ffffff;   /* cells, instrument faces */
   --ink: #191712;     /* primary text */
   --ink-2: #6f6c63;   /* secondary text */
-  --ink-3: #a9a59a;   /* labels, meta */
+  --ink-3: #918e84;   /* labels, meta */
   --line: #e7e5dd;    /* hairlines, gaps */
   --line-2: #d2cfc5;  /* stronger borders */
   --blue: #26243F;    /* the law — identity, enclosed */
   --red: #A8322B;     /* the Move — live, critical, bare */
-  --font-sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-sans: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
 }
 ```
@@ -292,6 +292,6 @@ Agent path in short: read `AGENTS.md` → pick the mode → import `tokens.css` 
 
 This project is licensed under the **MIT License**. Copyright © 2026 **Non Arkaraprasertkul / Axiom X Co., Ltd.** See [`LICENSE`](LICENSE).
 
-The MIT grant covers original work in this repository. It does not license Dieter Rams's ten principles, the 1970 NYCTA Graphics Standards Manual, Xiaohei illustrations (Ian Neo — separate repo, separate terms), or third-party type (Inter, Spectral — their own licenses). Quote the lineage; do not ship the marks as if they were yours.
+The MIT grant covers original work in this repository. It does not license Dieter Rams's ten principles, the 1970 NYCTA Graphics Standards Manual, Xiaohei illustrations (Ian Neo — separate repo, separate terms), or third-party type (Source Sans 3, Spectral — their own licenses). Quote the lineage; do not ship the marks as if they were yours.
 
 *axiom.nonarkara.org · Non Arkaraprasertkul · Axiom X Co., Ltd. · MIT License.*
