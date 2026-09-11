@@ -15,11 +15,14 @@ function useColor() {
   return process.stdout.isTTY && !process.env.NO_COLOR;
 }
 
-export function formatReport({ files, findings, errors, warnings, root, strict }, { color = useColor() } = {}) {
+export function formatReport({ files, findings, errors, warnings, root, strict, byLayer }, { color = useColor() } = {}) {
   const c = (code, s) => (color ? `${code}${s}${RESET}` : s);
   const lines = [];
   lines.push(c(BOLD, 'axiom-audit') + c(DIM, `  scanning ${root}`));
   lines.push(c(DIM, `${files} files scanned · ${errors} errors · ${warnings} warnings`));
+  if (byLayer) {
+    lines.push(c(DIM, `front ${byLayer.front} · back ${byLayer.back} · seam ${byLayer.seam}`));
+  }
   lines.push('');
 
   if (findings.length === 0) {
@@ -39,7 +42,7 @@ export function formatReport({ files, findings, errors, warnings, root, strict }
     lines.push(c(BOLD, file));
     for (const f of list) {
       const sev = f.severity === 'error' ? c(RED, '✗') : c(YELLOW, '!');
-      const pos = c(DIM, `${String(f.line).padStart(4)}:${String(f.col).padStart(3)}`);
+      const pos = c(DIM, f.line ? `${String(f.line).padStart(4)}:${String(f.col).padStart(3)}` : '   ·   ');
       const match = c(DIM, `\`${f.match}\``);
       lines.push(`  ${sev}  ${pos}  ${f.msg}  ${match}`);
     }
@@ -49,7 +52,7 @@ export function formatReport({ files, findings, errors, warnings, root, strict }
   if (strict) {
     lines.push(c(RED, `${errors} error(s) found. Strict mode — build fails.`));
   } else {
-    lines.push(c(YELLOW, `${errors} error(s), ${warnings} warning(s) found. Run with --strict to fail the build.`));
+    lines.push(c(YELLOW, `${errors} error(s), ${warnings} warning(s) found. Advisory mode — exiting 0. Run with --strict to fail the build.`));
   }
   return lines.join('\n');
 }

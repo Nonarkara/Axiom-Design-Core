@@ -1,18 +1,48 @@
 # @axiom-design/audit
 
-A CLI that scans any project for violations of the [Axiom / Rams × NYCTA hard bans](../../AXIOM-DNA.md). This is the operational layer that catches "template-looking" patterns before they ship.
+Audits a project against **both halves** of the Axiom core in one pass.
 
-## What it catches
+| Layer | Source | Checks |
+|---|---|---|
+| `front` | `AXIOM-DNA.md` | radius, shadow, gradient, blur, palette, weights, arrows, motion, pure `#000`/`#fff` |
+| `back` | `AXIOM-SPINE.md` | secret literals, fabricated data on a data path, empty catch, SQL interpolation, model keys in client bundles, green-washed gates |
+| `seam` | `AXIOM-SPINE.md §9` | `tokens.css` contrast vs `§19` (computed), provenance headers produced vs consumed, token drift, eyebrow ratio |
 
-| Category | Examples |
+```bash
+npx axiom-audit .                  # advisory — reports, exits 0
+npx axiom-audit . --strict         # CI — exits 2 on errors
+npx axiom-audit . --json           # machine-readable
+npx axiom-audit . --no-seam        # per-line layers only
+```
+
+**Exit codes** — an operational failure and a design finding are different
+events and do not share a code (shape borrowed from `pbakaus/impeccable`):
+
+| Code | Means |
 |---|---|
-| **Tailwind utilities** | `rounded-md`, `rounded-2xl`, `shadow-md`, `shadow-lg`, `bg-gradient-to-r`, `backdrop-blur`, `text-red-500`, `font-bold` |
-| **CSS** | `linear-gradient(`, `radial-gradient(`, `box-shadow: 0 2px 4px`, `border-radius: 8px`, `font-weight: 700`, `backdrop-filter:` |
-| **Colors** | Pure `#000` and `#fff`; any hardcoded hex (warning, not error) |
-| **Arrows** | Unicode arrows (`→ ➔ ⇨`) — must use the `<Arrow/>` component |
-| **Motion** | Bounce animation, transitions over 700ms, overshoot easing curves |
+| `0` | scan completed; clean, or findings in advisory mode |
+| `1` | the scan could not run — bad path, nothing scannable |
+| `2` | scan completed, errors found, `--strict` was passed |
+| `3` | invalid usage |
 
-Lines that opt out via `// axiom-audit-ignore` or `// axiom-audit-ignore-next-line` are skipped — use sparingly, with a comment explaining why.
+**Waivers must say why.** A directive with no reason is itself reported, so the
+exception register for a whole project is `grep -rn axiom-audit-ignore`:
+
+```css
+/* axiom-audit-ignore-next-line colors -- a palette page prints its own token values */
+```
+
+**Borrowed mechanisms**, with thanks: exit-code contract and reasoned waivers
+from [impeccable](https://github.com/pbakaus/impeccable); real WCAG contrast
+maths and the recompute-don't-assert habit from
+[ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill);
+the countable eyebrow ratio from
+[taste-skill](https://github.com/leonxlnx/taste-skill); backend layer taxonomy
+from [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything).
+The provenance seam is ours — every system surveyed was frontend-only, so none
+of them had a seam to check.
+
+---
 
 ## Install
 
@@ -32,55 +62,9 @@ npx axiom-audit .
 # Scan a specific app
 npx axiom-audit ./apps/web
 
-# Strict mode — exit non-zero on any error (for CI)
+# Strict mode — exit 2 on any error (for CI)
 npx axiom-audit ./apps/web --strict
 
 # Machine-readable output
 npx axiom-audit . --json | jq '.errors'
 ```
-
-## Exit codes
-
-| Code | Meaning |
-|---|---|
-| 0 | Clean (or warnings only in non-strict mode) |
-| 1 | Errors found |
-| 2 | Invalid usage or scan failure |
-
-## Skipped paths
-
-The audit automatically skips:
-
-- `node_modules/`, `dist/`, `build/`, `.next/`, `coverage/`, `.git/`
-- Lockfiles (`package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`)
-- Config files (`tsconfig*.json`, `vitest.config.*`, `vite.config.*`, `wrangler.toml`)
-- Test files (`*.test.*`, `*.spec.*`, `__tests__/`, `__mocks__/`)
-- `README.md`, `LICENSE`, `NOTICE.md`
-- The design system packages themselves (`packages/react/`, `packages/audit/`, `packages/tailwind-preset/`)
-
-## CI integration
-
-```yaml
-# .github/workflows/audit.yml
-name: design-system-audit
-on: [pull_request]
-jobs:
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npx @axiom-design/audit . --strict
-```
-
-## When to use `--strict`
-
-- **Local dev** — default (report only) so agents can iterate
-- **CI / pre-merge** — `--strict` to block PRs that introduce a template pattern
-- **Audits of existing repos** — default, then opt into `--strict` per project as it gets clean
-
-## License
-
-MIT. See [LICENSE](../../LICENSE) at the repo root.

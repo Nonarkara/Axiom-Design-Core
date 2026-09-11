@@ -27,6 +27,22 @@ Throw this repo at any agent — Claude Code, Cursor, Cline, Continue, Aider, Wi
 
 ---
 
+> ## Front and back
+>
+> `AXIOM-DNA.md` governs what the reader sees. **[`AXIOM-SPINE.md`](AXIOM-SPINE.md)**
+> governs what reaches them, and whether it is true — the envelope, the
+> `{source, tier, age}` honesty contract, trust boundaries, secret hygiene, and
+> **the seam**: the rule that a signal only exists if both halves honour it.
+>
+> `§20` has always banned *data without provenance*. Until 2026-09-11 nothing
+> here produced provenance and nothing checked that anything consumed it,
+> because the core was frontend-only. One command now audits all three layers:
+>
+> ```bash
+> npx axiom-audit .           # front bans · back bans · the seam
+> npx axiom-audit . --strict  # exit 2 on errors, for CI
+> ```
+>
 ## Contents
 
 1. [What this is](#what-this-is)

@@ -1,7 +1,7 @@
 {
   "name": "@axiom-design/audit",
   "version": "0.1.0",
-  "description": "Audit any project for Axiom / Rams × NYCTA hard-bans. Catches the template-looking patterns before they ship.",
+  "description": "Audit a project against both halves of the Axiom core \u2014 front bans, back bans, and the front/back seam.",
   "type": "module",
   "bin": {
     "axiom-audit": "./bin/axiom-audit.mjs"
@@ -12,7 +12,8 @@
     "README.md"
   ],
   "scripts": {
-    "audit": "node ./bin/axiom-audit.mjs"
+    "audit": "node ./bin/axiom-audit.mjs",
+    "test": "node --test test/audit.test.mjs"
   },
   "engines": {
     "node": ">=18"

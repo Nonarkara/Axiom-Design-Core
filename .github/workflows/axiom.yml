@@ -1,0 +1,19 @@
+name: axiom
+on: [push, pull_request]
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+
+      # The design core must obey its own canon. It did not: on 2026-09-11 a
+      # self-audit produced 15 errors, every one a false positive against rules
+      # in AXIOM-DNA (§6.2 mandates the 700 weight the audit banned; tokens.css
+      # declares the easing the audit called overshoot). There was no CI, so
+      # nobody found out. --strict so it stays that way.
+      - run: node packages/audit/bin/axiom-audit.mjs . --strict
+
+      # Front bans, back bans, the seam, the exit contract, the waiver rule.
+      - run: node --test packages/audit/test/audit.test.mjs

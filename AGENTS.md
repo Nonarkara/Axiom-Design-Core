@@ -10,6 +10,23 @@ This file is the **5-line spine**. Drop it into any agent's context, ask for any
 
 ---
 
+
+## Two halves, one core
+
+- **`AXIOM-DNA.md`** — what the reader sees. Colour, type, grid, motion, the Move.
+- **`AXIOM-SPINE.md`** — what reaches them and whether it is true. The response
+  envelope, the `{source, tier, age}` honesty contract, trust boundaries,
+  secrets, exposure, and the front↔back seam.
+
+Read the half you are working in, and read `AXIOM-SPINE.md §9` either way — the
+seam is where both halves fail together. A provenance header the back half sets
+and the front half never reads is worse than no header, because the next reader
+assumes it works.
+
+Verify with `npx axiom-audit . --strict` before claiming done. It audits front
+bans, back bans and the seam in one pass, computes every `tokens.css` contrast
+pair against `§19` instead of trusting the prose, and exits 2 on errors.
+
 ## 1. The Equation
 
 **Function first. Subtract. One Divine Move. MoMA Law. Golden Section.**

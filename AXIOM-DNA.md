@@ -1,5 +1,12 @@
 # AXIOM DNA — The Universal Design System
 
+> **This is the front half.** What reaches the reader, and whether it is true, is
+> **[`AXIOM-SPINE.md`](AXIOM-SPINE.md)** — the response envelope, the
+> `{source, tier, age}` honesty contract, trust boundaries, secrets, and the
+> seam. `§20`'s ban on *data without provenance* is unenforceable from inside a
+> stylesheet; the spine is where it becomes a check. Both halves are audited by
+> one command: `npx axiom-audit . --strict`.
+
 > **For:** Axiom — decision systems for cities, governments, and operators. axiom.nonarkara.org
 > **Use:** Throw this document at any agent — slide-maker, infographic-maker, dashboard-builder, system-builder, document-writer. It contains everything that agent needs to produce a correct Axiom design: static or interactive, gamified or narrative-driven.
 > **Version:** 2.1 — The Living Edition. (2.1 adds the Motion craft pass, §13 — real easing curves and a templated-ness audit, credited in §13.5.)
@@ -816,7 +823,9 @@ How each agent applies this DNA. Throw the document; read your section.
 
 Legibility is not a feature. It is the whole promise. A thing you cannot read is a thing that does not work.
 
-- **Contrast:** body text ≥ 4.5:1; large text and UI elements ≥ 3:1 (WCAG AA, the floor). `--ink` on `--paper` passes. Verify white glyphs on `--blue` and `--red` (both pass); verify any red text on paper at small sizes — if it fails, darken or enlarge.
+- **Contrast:** body text ≥ 4.5:1; large text and UI elements ≥ 3:1 (WCAG AA, the floor).
+  `axiom-audit` computes every pair from `tokens.css` and fails the build below the floor — "verify" is not left to the reader. Measured: `--ink`/`--paper` 16.43:1 · `--ink-2`/`--paper` 4.81:1 · `--ink-3`/`--paper` 3.01:1 · white/`--blue` 14.93:1 · white/`--red` 6.65:1 · `--red`/`--paper` 6.10:1.
+  `--ink-3` was `#a9a59a` = **2.26:1** until 2026-09-11 — below both floors, on the token §6.2 assigns to the 9px micro-label. Every pair this section named passed; the one it did not name was the one that failed. That is why the numbers are computed now and not asserted.
 - **Never signal by color alone.** Red also carries a label, a shape, or a position. A red number is also a minus sign. A live dot is also the word "LIVE."
 - **Tabular figures** everywhere numbers align or change.
 - **Focus is always visible:** the 1px border darken. Never remove focus styling.
@@ -847,7 +856,7 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 - ❌ Blaming the user for "user errors"
 - ❌ Arbitrary spacing not derived from the type scale
 - ❌ Loading without feedback
-- ❌ Data without provenance
+- ❌ Data without provenance — see [`AXIOM-SPINE.md §4`](AXIOM-SPINE.md) for the `{source, tier, age}` contract and `§9` for the seam check that proves the front half reads it
 - ❌ Pretension — academic plumage, complexity worn as intelligence, any word that carries no freight
 
 ---

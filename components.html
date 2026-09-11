@@ -70,6 +70,7 @@
         </div>
         <div style="background:var(--panel);padding:13px 11px;border:1px solid var(--line-2);">
           <div class="stat-lbl">PANEL</div>
+          <!-- axiom-audit-ignore-next-line colors -- a palette page has to print its own token values -->
           <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);">#ffffff</div>
         </div>
         <div style="background:var(--ink);padding:13px 11px;">
@@ -78,17 +79,17 @@
         </div>
         <div style="background:var(--blue);padding:13px 11px;">
           <div class="stat-lbl" style="color:rgba(255,255,255,.6);">BLUE — LAW</div>
-          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#26243F</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:var(--paper);">#26243F</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0;margin-top:0;">
         <div style="background:var(--ink-2);padding:13px 11px;">
           <div class="stat-lbl" style="color:rgba(255,255,255,.6);">INK-2</div>
-          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#6f6c63</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:var(--paper);">#6f6c63</div>
         </div>
         <div style="background:var(--ink-3);padding:13px 11px;">
           <div class="stat-lbl" style="color:rgba(255,255,255,.6);">INK-3</div>
-          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#a9a59a</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:var(--paper);">#918e84</div>
         </div>
         <div style="background:var(--line);padding:13px 11px;">
           <div class="stat-lbl">LINE</div>
@@ -96,7 +97,7 @@
         </div>
         <div style="background:var(--red);padding:13px 11px;">
           <div class="stat-lbl" style="color:rgba(255,255,255,.6);">RED — MOVE</div>
-          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:#fff;">#A8322B</div>
+          <div style="font-size:10px;margin-top:6px;font-family:var(--font-mono);color:var(--paper);">#A8322B</div>
         </div>
       </div>
       <div class="g-note">Blue = identity (enclosed). Red = signal (bare). Color appears only at the exception — the absence of red is the good news.</div>
@@ -328,7 +329,7 @@
     </div>
 
     <div style="display:flex;align-items:stretch;border:1px solid var(--line-2);background:var(--panel);">
-      <div style="background:var(--red);color:#fff;padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
+      <div style="background:var(--red);color:var(--paper);padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
         <span style="font-size:11px;letter-spacing:0.18em;font-weight:700;">CRITICAL</span>
       </div>
       <div style="padding:11px 20px;flex:1;">
@@ -338,7 +339,7 @@
     </div>
 
     <div style="display:flex;align-items:stretch;border:1px solid var(--line-2);background:var(--panel);">
-      <div style="background:var(--blue);color:#fff;padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
+      <div style="background:var(--blue);color:var(--paper);padding:14px 20px;display:flex;align-items:center;flex-shrink:0;">
         <span style="font-size:11px;letter-spacing:0.18em;font-weight:700;">DECISION</span>
       </div>
       <div style="padding:11px 20px;flex:1;">
@@ -571,6 +572,7 @@
         <li>Gradients (except legibility overlay on photo)</li>
         <li>Drop shadows, glows, blurs, glassmorphism</li>
         <li>Rounded corners (0–2px max)</li>
+        <!-- axiom-audit-ignore-next-line colors -- the ban list has to be able to name the ban -->
         <li>Pure #000 or pure #fff</li>
         <li>A second free accent color</li>
         <li>Font weights 700+ on data</li>

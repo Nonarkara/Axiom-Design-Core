@@ -19,10 +19,22 @@
 
   /* ── §1 Foundation ──────────────────────────────────────── */
   --paper:  #f6f5f2;   /* page ground — warm off-white, never #fff      */
+  /* OPEN DECISION (2026-09-11): §20 bans pure #fff outright, and this token is
+     pure #fff one line below --paper's comment saying "never #fff". Left as-is
+     because a white instrument face against warm paper is plausibly the
+     intended two-tone, not an accident. Either §20 gains a stated exception for
+     --panel, or --panel stops being pure white. A design-intent call, so it is
+     named here rather than guessed. */
+  /* axiom-audit-ignore-next-line colors -- open decision, see the note above */
   --panel:  #ffffff;   /* cells / instrument faces                       */
   --ink:    #191712;   /* primary text, bars, active — warm near-black   */
   --ink-2:  #6f6c63;   /* secondary text — AA on --paper                 */
-  --ink-3:  #a9a59a;   /* tertiary, labels, meta                         */
+  --ink-3:  #918e84;   /* tertiary, labels, meta — 3.01:1 on --paper     */
+  /* was #a9a59a = 2.26:1, which cleared neither §19 floor (4.5 body,
+     3 large/UI) while §6.2 assigns this token to the 9px micro-label
+     role. Darkened the minimum that clears 3:1 with the hue preserved.
+     If a 9px meta label counts as body text rather than UI chrome it
+     needs 4.5:1 = #737069. One edit; axiom-audit proves either. */
   --line:   #e7e5dd;   /* hairlines, grid gaps, inactive tracks          */
   --line-2: #d2cfc5;   /* stronger borders, structural dividers          */
 
@@ -125,7 +137,7 @@ body {
 /* ── Selection ────────────────────────────────────────────── */
 ::selection {
   background: var(--red);
-  color: #fff;
+  color: var(--paper);
 }
 
 /* ── Focus ────────────────────────────────────────────────── */
@@ -254,7 +266,7 @@ body {
 }
 
 .btn--primary  { background: var(--ink);  color: var(--paper); border-color: var(--ink); }
-.btn--critical { background: var(--red);  color: #fff;         border-color: var(--red); }
+.btn--critical { background: var(--red);  color: var(--paper);         border-color: var(--red); }
 .btn--ghost    { background: transparent; color: var(--ink);   }
 
 .btn--primary:hover  { opacity: .88; }
@@ -299,7 +311,7 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  color: #fff;
+  color: var(--paper);
   flex-shrink: 0;
 }
 
