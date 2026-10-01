@@ -47,13 +47,15 @@ COLOR (Thai flag — meaning encoded):
 - Grey is the quiet between: warm near-black ink #191712 down through a warm grey ramp.
 - Green retired. Normal/positive data needs no color — the absence of red is the good news. Color appears only at the exception.
 
+COLOR METHOD: Read COLOR-PRINCIPLES.md. Judge the whole viewport, remove hue, name token roles and areas, measure actual rendered foreground/background pairs (including opacity and states), and keep visible non-color cues. Record the decision and source in context.md. Palette shares are exhibition studies, not dashboard quotas. Small labels need 4.5:1, even at 9px. Preserve the pinned Palette source and exact plate URL if one is used.
+
 TYPE: Source Sans 3 (instrument/UI), Spectral (editorial/reading). Tabular figures. Weight ceiling 600 for data — restraint reads as confidence; heavy weights read as panic. The smaller the text, the wider the tracking. Labels: small, letterspaced, uppercase, grey. Baseline-aligned everywhere.
 
 VOICE (Hemingway + Bukowski): Direct. True. Economical — cut every word that carries no freight, as if you paid by the word to send it. Short declaratives. Active voice. Numbers over adjectives. No academic hedging, no pretension, no complexity worn as a costume for intelligence. Directness is not boredom: build the labyrinth, then land the twist. Sound smart by being clear. No exclamation marks. No emoji.
 
 MOTION: Feedback only. State changes ≤150ms. One sanctioned animation: the slow status pulse (the live red dot). No entrance animations, no scroll reveals, no parallax.
 
-DON'T: gradients, shadows, glows, blur, glassmorphism; rounded corners (0–2px, except the Sato mercy-radius in Play mode); a second free accent; pure #000/#fff; emoji, stock imagery, decorative icons; bold-everything; centering dense content; arbitrary values off the scale; decoration of any kind. Decoration is a lie about who we are.
+DON'T: gradients, shadows, glows, blur, glassmorphism; rounded corners (0–2px, except the Sato mercy-radius in Play mode); a second free accent; pure-black ink or pure-white page grounds (the --panel instrument-face/measured-glyph exception is allowed); emoji, stock imagery, decorative icons; bold-everything; centering dense content; arbitrary values off the scale; decoration of any kind. Decoration is a lie about who we are.
 ```
 
 ---
@@ -199,6 +201,12 @@ One spine. Three registers. Pick the mode by the human's *act*, not by taste.
 
 ## 5. COLOR SYSTEM
 
+**Required companion:** [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) adapts
+Palette’s relationship, value, role/area, contrast and provenance gates to Axiom.
+Complete its [decision record](docs/color-decision-template.md) before choosing
+or changing a surface’s color. The source pin and adaptation are maintained
+there; this DNA retains Axiom’s semantic color law.
+
 ### 5.1 Core Tokens
 
 | Token | Hex | Role |
@@ -207,14 +215,14 @@ One spine. Three registers. Pick the mode by the human's *act*, not by taste.
 | `--panel` | `#ffffff` | Cells, instrument faces |
 | `--ink` | `#191712` | Primary text, bars, active — warm near-black |
 | `--ink-2` | `#6f6c63` | Secondary text |
-| `--ink-3` | `#918e84` | Tertiary, labels, meta |
+| `--ink-3` | `#737069` | Tertiary, labels, meta |
 | `--line` | `#e7e5dd` | Hairlines, grid gaps, inactive tracks |
 | `--line-2` | `#d2cfc5` | Stronger borders, dividers |
 | `--blue` | `#26243F` | **The law.** Identity, structure. Enclosed. |
 | `--red` | `#A8322B` | **The Move.** Live, critical, decision, negative. Bare. |
 
-> **Warmth rule:** neutrals are warm (a trace of yellow/red), never cool blue-grey. Pure black and pure white are banned.
-> `--panel` is the stated exception, unresolved on purpose: `#ffffff` sits one row above this note. A white instrument face on warm paper is plausibly the intended two-tone rather than an accident, so it is left as-is and waived with a reason in `tokens.css` rather than silently exempted or silently fixed. Either this rule gains a stated exception for `--panel`, or `--panel` stops being pure white — that is a design call, named here rather than guessed.
+> **Warmth rule:** neutrals are warm (a trace of yellow/red), never cool blue-grey. Pure-black ink and pure-white page grounds are banned.
+> **Functional exception:** `--panel: #ffffff` is allowed for instrument faces against warm paper and the measured trunk-glyph pairs in `COLOR-PRINCIPLES.md`. This preserves the existing two-tone surface and accessible glyphs; it does not authorize a white page ground or arbitrary white accents. The token’s scanner waiver records this explicit exception.
 >
 > **The exception rule (Rams + Vignelli):** color appears only at the exception. Normal is grey. Identity is blue. The one spike is red. If a thing is *fine*, it stays grey — the absence of red is the good news.
 
@@ -238,21 +246,24 @@ The eight Vignelli/MTA trunk colors survive as a *subsystem*, not the brand. Use
 
 | Token | Hex | Glyph |
 |---|---|---|
-| `--rt-blue` | `#0039A6` | `#fff` |
-| `--rt-orange` | `#FF6319` | `#fff` |
-| `--rt-green` | `#00853F` | `#fff` |
-| `--rt-red` | `#EE352E` | `#fff` |
-| `--rt-purple` | `#B933AD` | `#fff` |
+| `--rt-blue` | `#0039A6` | `--panel` |
+| `--rt-orange` | `#FF6319` | `--ink` (small text) |
+| `--rt-green` | `#00853F` | `--panel` |
+| `--rt-red` | `#EE352E` | External small label; `--panel` only for qualifying large glyph |
+| `--rt-purple` | `#B933AD` | `--panel` |
 | `--rt-yellow` | `#FCCC0A` | `#191712` |
-| `--rt-grey` | `#6D6E71` | `#fff` |
-| `--rt-brown` | `#996633` | `#fff` |
+| `--rt-grey` | `#6D6E71` | `--panel` |
+| `--rt-brown` | `#996633` | `--panel` |
 
-> Yellow takes a dark glyph — white on yellow fails contrast. Same legibility discipline, every time.
+> Glyph choices above are requirements for their actual size, not a generic
+> “white always works” rule. See [tested pair guidance](COLOR-PRINCIPLES.md#4-working-pairs-and-a-real-correction). Orange and yellow use `--ink`; the red
+> trunk needs an external small label or a qualifying large glyph. Trunk values
+> and the Axiom identity remain unchanged.
 
 ### 5.5 Selection & Focus
 
 ```css
-::selection { background: var(--red); color: #fff; }
+::selection { background: var(--red); color: var(--paper); }
 ```
 Focus = a 1px border darken (`--line-2` → `--ink`, or → `--blue`). No glow, no ring, no halo.
 
@@ -485,7 +496,7 @@ Flat track, solid fill, square ends. No radius, no gradient. The fill against th
 
 ### 10.7 Buttons
 
-- **Primary:** `background:var(--ink)` or `var(--blue)`; `color:#fff`; padding `10–14px 18–22px`; `font:11–12px/700`, `letter-spacing:0.12em`, UPPERCASE; no radius; hover → `opacity:0.9`.
+- **Primary:** `background:var(--ink)` or `var(--blue)`; `color:var(--paper)`; padding `10–14px 18–22px`; `font:11–12px/700`, `letter-spacing:0.12em`, UPPERCASE; no radius; hover → `opacity:0.9`.
 - **Critical / decision:** `background:var(--red)`. Reserved for the one action that matters on the surface.
 - **Tertiary / link:** transparent, `color:var(--ink-2)`, hover → `var(--blue)`. Pair with directional triangle (§11.5).
 
@@ -524,7 +535,7 @@ Perfect circle, solid trunk or `--blue`, white glyph, no border, no shadow.
 ```html
 <span style="width:34px; height:34px; border-radius:50%; flex:none;
              display:inline-flex; align-items:center; justify-content:center;
-             font-size:16px; font-weight:700; color:#fff; background:var(--blue);">A</span>
+             font-size:16px; font-weight:700; color:var(--paper); background:var(--blue);">A</span>
 ```
 
 | Context | Diameter | Glyph px |
@@ -543,7 +554,7 @@ Always a true circle. Always a glyph inside. Never two glyphs, never stroked, ne
   <div style="display:flex; align-items:center; gap:13px;">
     <span style="width:34px;height:34px;border-radius:50%;flex:none;display:inline-flex;
                  align-items:center;justify-content:center;font-size:16px;font-weight:700;
-                 color:#fff;background:var(--blue);">A</span>
+                 color:var(--paper);background:var(--blue);">A</span>
     <div>
       <div style="font-size:9px;letter-spacing:0.18em;color:var(--ink-3);font-weight:600;">MACRO 03</div>
       <div style="font-size:22px;font-weight:600;margin-top:1px;">Regime</div>
@@ -833,9 +844,9 @@ How each agent applies this DNA. Throw the document; read your section.
 
 Legibility is not a feature. It is the whole promise. A thing you cannot read is a thing that does not work.
 
-- **Contrast:** body text ≥ 4.5:1; large text and UI elements ≥ 3:1 (WCAG AA, the floor).
-  `axiom-audit` computes every pair from `tokens.css` and fails the build below the floor — "verify" is not left to the reader. Measured: `--ink`/`--paper` 16.43:1 · `--ink-2`/`--paper` 4.81:1 · `--ink-3`/`--paper` 3.01:1 · white/`--blue` 14.93:1 · white/`--red` 6.65:1 · `--red`/`--paper` 6.10:1.
-  `--ink-3` was `#a9a59a` = **2.26:1** until 2026-09-11 — below both floors, on the token §6.2 assigns to the 9px micro-label. Every pair this section named passed; the one it did not name was the one that failed. That is why the numbers are computed now and not asserted.
+- **Contrast:** body text, small labels and control text ≥ 4.5:1. Qualifying large text (24px regular or 18.67px bold) and essential non-text UI/graphics ≥ 3:1. A 9px label is text, not a 3:1 exemption.
+  `axiom-audit` computes named opaque token pairs from `tokens.css`, including `--ink-3` on paper and panel and actual `--paper` glyphs on blue/red/ink. It does not inspect rendered component states, opacity or every adjacent pair. [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) owns the tested examples, exact-value workflow and browser/human release gates.
+  `--ink-3` is now `#737069` (4.53:1 on paper). The earlier 3.01:1 neutral did not pass for its actual 9px labels; its prior 3:1 audit floor was wrong. Do not weaken the floor to preserve a swatch.
 - **Never signal by color alone.** Red also carries a label, a shape, or a position. A red number is also a minus sign. A live dot is also the word "LIVE."
 - **Tabular figures** everywhere numbers align or change.
 - **Focus is always visible:** the 1px border darken. Never remove focus styling.
@@ -850,7 +861,7 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 - ❌ Gradients, drop shadows, glows, blurs, glassmorphism
 - ❌ Rounded corners (0px; 2px max) — except the documented Sato mercy-radius
 - ❌ A second free accent (one blue identity, one red Move; nothing else)
-- ❌ Pure `#000` or pure `#fff`
+- ❌ Pure-black ink or pure-white page ground; `--panel` instrument faces and measured trunk glyphs are the explicit §5.1 exception
 - ❌ Emoji, decorative icons, illustration, stock imagery
 - ❌ Font weights 700+ on data; more than the two sanctioned families
 - ❌ Centering dense content; `margin:auto` heroics
@@ -908,7 +919,7 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 
 ```html
 <div style="--paper:#f6f5f2; --panel:#fff; --ink:#191712; --ink-2:#6f6c63;
-            --ink-3:#918e84; --line:#e7e5dd; --line-2:#d2cfc5;
+            --ink-3:#737069; --line:#e7e5dd; --line-2:#d2cfc5;
             --blue:#26243F; --red:#A8322B;
             background:var(--paper); color:var(--ink);
             font-family:'Source Sans 3','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -921,7 +932,7 @@ Legibility is not a feature. It is the whole promise. A thing you cannot read is
 ```css
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;background:#f6f5f2;}
-::selection{background:#A8322B;color:#fff;}
+::selection{background:#A8322B;color:#f6f5f2;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 ```
 
@@ -938,6 +949,8 @@ html,body{margin:0;padding:0;background:#f6f5f2;}
 □ PRE-COGNITIVE: Can it be absorbed in one glance? (a sign read twice has failed)
 □ LINED GLASS: Is state read instantly, never measured? Feedback under 100ms?
 □ COLOR: Grey for normal, blue for identity (enclosed), red for the one exception (bare)?
+□ PALETTE GATE: COLOR-PRINCIPLES.md decision record, viewport/grayscale, roles/area, exact state pairs and non-color cues checked?
+□ COLOR SOURCE: Pinned source and exact plate URL/export retained if used; screen conversion and interpretation identified?
 □ VOICE: Direct, true, economical, unpretentious — and still alive?
 □ HONESTY: Provenance, dates, caveats shown? Data untouched?
 □ MOTION: Real easing curve, not flat `ease`? Press feedback on every button? Origin-aware popovers? Nothing entering from `scale(0)`? (§13)

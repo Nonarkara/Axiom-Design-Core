@@ -109,6 +109,12 @@ Name it in the project's `context.md`. If it could describe any other surface in
 
 Not "clean and modern" — unenforceable. Name a real artifact: *the Braun ET66*, *the 1972 Vignelli subway diagram*, *MoMA's own site*, *a Linear product page*, *a specific magazine spread*. An agent can reason about a named reference. It cannot reason about an adjective.
 
+Color also needs the [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) decision record:
+name the actual relationship, roles and area rather than a mood adjective.
+Viewport and grayscale evidence, measured rendered pairs, and visible non-color
+cues are required. A named Palette plate is provenance, not automatic approval
+of its colors for Axiom’s operational states.
+
 ### 4.3 The MoMA rules — the layout standard
 
 Extracted from moma.org, at Dr Non's direction:

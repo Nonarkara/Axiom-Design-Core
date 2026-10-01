@@ -9,12 +9,12 @@
  */
 
 export const tokens = {
-  /** Foundation — warm neutrals, never #000 / #fff */
+  /** Foundation — warm neutrals; panel is the documented white instrument-face/glyph exception. */
   paper: '#f6f5f2',
   panel: '#ffffff',
   ink: '#191712',
   ink2: '#6f6c63',
-  ink3: '#a9a59a',
+  ink3: '#737069', // 4.53:1 on paper; small labels need the text floor.
   line: '#e7e5dd',
   line2: '#d2cfc5',
 

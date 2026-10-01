@@ -36,25 +36,27 @@ export function contrastRatio(a, b) {
   return (hi + 0.05) / (lo + 0.05);
 }
 
-/** §19 floors. Body text 4.5:1; large text and UI elements 3:1. */
-const FLOOR = { text: 4.5, ui: 3 };
+/** §19 / COLOR-PRINCIPLES.md: all small text, including 9px UI labels, is 4.5:1. */
+const FLOOR = { text: 4.5 };
 
 /**
- * Token roles that carry text, with the floor each must clear. §6.2 assigns
- * --ink-3 to the 9px micro-label role, so it carries text and must clear a
- * floor — it is not decorative.
+ * Explicit opaque pairs, not a claim about every rendered component. Browser
+ * state/opacity checks remain required by COLOR-PRINCIPLES.md. Use --paper for
+ * the actual glyph foreground; substituting pure white overstates contrast.
  */
-const CONTRAST_CONTRACT = [
-  { fg: 'ink', bg: 'paper', floor: FLOOR.text, role: 'primary text (§6.2 body/value)' },
-  { fg: 'ink-2', bg: 'paper', floor: FLOOR.text, role: 'secondary text — tokens.css declares "AA on --paper"' },
-  { fg: 'ink-3', bg: 'paper', floor: FLOOR.ui, role: 'micro-label / meta, 9px UPPERCASE (§6.2)' },
-  { fg: 'blue', bg: 'paper', floor: FLOOR.text, role: 'identity text' },
-  { fg: 'red', bg: 'paper', floor: FLOOR.text, role: 'the Move, bare (§19 says verify at small sizes)' },
-];
-
-const WHITE_ON = [
-  { bg: 'blue', role: 'white glyphs on --blue (§19 claims it passes)' },
-  { bg: 'red', role: 'white glyphs on --red (§19 claims it passes)' },
+export const CONTRAST_CONTRACT = [
+  ...['paper', 'panel'].flatMap((bg) => [
+    { fg: 'ink', bg, floor: FLOOR.text, role: 'primary text (§6.2 body/value)' },
+    { fg: 'ink-2', bg, floor: FLOOR.text, role: 'secondary text' },
+    { fg: 'ink-3', bg, floor: FLOOR.text, role: 'small labels / meta, including 9px (§6.2)' },
+    { fg: 'blue', bg, floor: FLOOR.text, role: 'identity text' },
+    { fg: 'red', bg, floor: FLOOR.text, role: 'the Move, bare' },
+  ]),
+  ...['blue', 'red', 'ink', 'ink-2'].map((bg) => (
+    { fg: 'paper', bg, floor: FLOOR.text, role: 'actual glyph / selection / button text, including primary hover' }
+  )),
+  { fg: 'ink', bg: 'line', floor: FLOOR.text, role: 'neutral button pressed state' },
+  { fg: 'red', bg: 'line', floor: FLOOR.text, role: 'signal button pressed state' },
 ];
 
 export function parseTokens(css) {
@@ -76,13 +78,6 @@ export function checkContrast(tokens) {
         severity: 'error',
         msg: `--${fg} on --${bg} is ${r.toFixed(2)}:1, below the §19 floor of ${floor}:1 — ${role}.`,
       });
-    }
-  }
-  for (const { bg, role } of WHITE_ON) {
-    if (!have(bg)) continue;
-    const r = contrastRatio('#ffffff', tokens[bg]);
-    if (r < FLOOR.text) {
-      findings.push({ rule: 'contrast-floor', severity: 'error', msg: `white on --${bg} is ${r.toFixed(2)}:1, below ${FLOOR.text}:1 — ${role}.` });
     }
   }
   return findings;

@@ -9,6 +9,12 @@ pnpm add @axiom-design/core-react
 pnpm add -D @axiom-design/tailwind-preset @axiom-design/audit
 ```
 
+Before styling, read [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) and add the
+[decision record](docs/color-decision-template.md) to the project’s `context.md`.
+Keep the [source pin](docs/palette-source.json) and [notices](THIRD_PARTY_NOTICES.md)
+with copied guidance. The packages supply tokens; they cannot decide a screen’s
+color areas or prove its rendered states are accessible.
+
 ## 2. Import the stylesheet once
 
 In your `main.tsx` (or wherever the React tree is mounted):
@@ -101,7 +107,7 @@ export function App() {
 ## What you keep
 
 - React 19 + Vite, your existing build, your existing routing, your existing data layer.
-- Full a11y — the components are real HTML elements with `aria-*` attributes, not `<div>` soup.
+- Semantic HTML and `aria-*` component hooks. These support accessibility; complete the rendered-state and human checks in `COLOR-PRINCIPLES.md` before making broader claims.
 - Tests — the audit catches regressions; Vitest in the package catches component contract changes.
 
 ## CI integration

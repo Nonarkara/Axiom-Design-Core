@@ -2,6 +2,15 @@
 
 A Tailwind preset that wires the [Axiom Design](../../AXIOM-DNA.md) tokens into Tailwind's theme — and **removes the hard-banned utilities** so a developer cannot accidentally smuggle in template chrome.
 
+## Color decisions
+
+Before using or extending the palette, read
+[COLOR-PRINCIPLES.md](../../COLOR-PRINCIPLES.md) in the source checkout and retain
+its decision template and source notice via `USAGE.md`. The preset preserves
+semantic token names; it cannot approve a new color’s job, area or rendered
+contrast. Measure actual state/opacity pairs and keep visible non-color cues.
+Package-only consumers need the companion source checkout, not just utilities.
+
 ## What you get when you use this preset
 
 - **Colors:** `paper`, `panel`, `ink`, `ink-2`, `ink-3`, `line`, `line-2`, `blue` (THE LAW), `red` (THE MOVE), plus the 8 NYCTA trunk colors as `trunk-blue`, `trunk-orange`, etc.

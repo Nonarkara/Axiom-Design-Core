@@ -12,6 +12,9 @@
 1. **`AGENTS.md`** — the 5-line DNA. The spine. Most of your work can be correct after this single file.
 2. **`AXIOM-DNA.md` §0** — the drop-in system prompt (paste it into your context if you need the rules in plain text).
 3. **`AXIOM-DNA.md` §4–§8** — Modes, Color, Typography, Golden Section, MoMA Law. Read these when you need depth on a specific decision.
+   **`COLOR-PRINCIPLES.md`** is required for every color decision: complete
+   `docs/color-decision-template.md`, retain the Palette source pin, and test
+   viewport/value/roles/exact rendered pairs/non-color meaning.
 4. **`components.html`** — live component gallery. Reference, do not invent variants.
 5. **`AXIOM-DNA.md` §22** — the full checklist and quick-start tokens.
 
@@ -32,7 +35,7 @@
 - **Never use** gradients, drop shadows, glows, blurs, glassmorphism.
 - **Never** center dense content.
 - **Never ship without `npx axiom-audit . --strict` exiting 0.** Also run it against built output (`axiom-audit dist`) — the provenance tells live in the bundle.
-- **Never start CSS without a Design Read and a named reference** written into the project's `context.md` (`ANTI-TEMPLATE.md` §4).
+- **Never start CSS without a Design Read and a named reference** written into the project's `context.md` (`ANTI-TEMPLATE.md` §4). Add the color decision record required by `COLOR-PRINCIPLES.md`; Palette shares do not override Axiom's identity or become dashboard quotas.
 
 When in doubt, remove. The axiom is: every element earns its place.
 

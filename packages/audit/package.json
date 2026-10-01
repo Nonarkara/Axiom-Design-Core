@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "audit": "node ./bin/axiom-audit.mjs",
-    "test": "node --test test/audit.test.mjs"
+    "test": "node --test test/*.test.mjs"
   },
   "engines": {
     "node": ">=18"

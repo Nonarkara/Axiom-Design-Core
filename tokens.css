@@ -7,9 +7,10 @@
 
    Rules enforced here:
    • Warm neutrals only — no cool blue-grey
-   • Pure #000 and pure #fff are banned
+   • No pure-black ink or pure-white page ground; --panel is the functional exception
    • Two signal colors: --blue (identity, enclosed) --red (Move, bare)
    • Green retired — absence of red is the good news
+   • COLOR-PRINCIPLES.md owns roles, area, grayscale and rendered-pair gates
    ============================================================ */
 
 /* Google Fonts — Source Sans 3 + Spectral (Inter removed 2026-09-08) */
@@ -19,22 +20,17 @@
 
   /* ── §1 Foundation ──────────────────────────────────────── */
   --paper:  #f6f5f2;   /* page ground — warm off-white, never #fff      */
-  /* OPEN DECISION (2026-09-11): §20 bans pure #fff outright, and this token is
-     pure #fff one line below --paper's comment saying "never #fff". Left as-is
-     because a white instrument face against warm paper is plausibly the
-     intended two-tone, not an accident. Either §20 gains a stated exception for
-     --panel, or --panel stops being pure white. A design-intent call, so it is
-     named here rather than guessed. */
-  /* axiom-audit-ignore-next-line colors -- open decision, see the note above */
+  /* Functional exception: --panel is the white instrument face on warm paper,
+     and the measured small-glyph foreground for the permitted trunk pairs in
+     COLOR-PRINCIPLES.md. It is not a replacement page ground or free accent. */
+  /* axiom-audit-ignore-next-line colors -- documented functional panel/glyph exception in DNA §5.1 */
   --panel:  #ffffff;   /* cells / instrument faces                       */
   --ink:    #191712;   /* primary text, bars, active — warm near-black   */
   --ink-2:  #6f6c63;   /* secondary text — AA on --paper                 */
-  --ink-3:  #918e84;   /* tertiary, labels, meta — 3.01:1 on --paper     */
-  /* was #a9a59a = 2.26:1, which cleared neither §19 floor (4.5 body,
-     3 large/UI) while §6.2 assigns this token to the 9px micro-label
-     role. Darkened the minimum that clears 3:1 with the hue preserved.
-     If a 9px meta label counts as body text rather than UI chrome it
-     needs 4.5:1 = #737069. One edit; axiom-audit proves either. */
+  --ink-3:  #737069;   /* labels/meta — 4.53:1 on paper, 4.94 on panel    */
+  /* COLOR-PRINCIPLES.md: small text always needs 4.5:1. The former
+     #918e84 cleared only 3.01:1, not the 9px label role it rendered.
+     Keep opacity 1; measure actual backgrounds and state overrides. */
   --line:   #e7e5dd;   /* hairlines, grid gaps, inactive tracks          */
   --line-2: #d2cfc5;   /* stronger borders, structural dividers          */
 
@@ -53,9 +49,9 @@
   /* Play mode and multi-board dashboards (5+ parallel boards) only.    */
   /* Never as decoration on the main identity.                           */
   --rt-blue:   #0039A6;  /* glyph: #fff  */
-  --rt-orange: #FF6319;  /* glyph: #fff  */
+  --rt-orange: #FF6319;  /* small glyph: --ink */
   --rt-green:  #00853F;  /* glyph: #fff  */
-  --rt-red:    #EE352E;  /* glyph: #fff  */
+  --rt-red:    #EE352E;  /* external small label; large glyph: --panel */
   --rt-purple: #B933AD;  /* glyph: #fff  */
   --rt-yellow: #FCCC0A;  /* glyph: #191712 — white on yellow fails */
   --rt-grey:   #6D6E71;  /* glyph: #fff  */

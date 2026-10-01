@@ -151,6 +151,12 @@ scale, sizes bound to their leading, no loose edges. Those are the
 [MoMA rules](https://github.com/Nonarkara/moma-rules), and they execute — a
 check fails the build rather than a principle asking to be agreed with.
 
+For color, [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) supplies the mandatory
+Palette-derived loop: full viewport, value study, role/area decision, exact
+rendered pairs and non-color task test. Keep the decision in `context.md` before
+the rough build. In Axiom, a regional accent must still obey the mode and
+blue-identity/red-exception law; an imported plate cannot silently replace it.
+
 The accent is the part that keeps the estate from converging into one look. It
 comes from the project's own subject, and it is named in writing before the
 first line of CSS. A system with no named accent will drift to the average of

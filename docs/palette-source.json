@@ -1,0 +1,17 @@
+{
+  "format": "axiom-palette-source/1",
+  "repository": "https://github.com/Nonarkara/palette",
+  "commit": "5dbe4ed5774bc68919bc68a809195e9ce2523059",
+  "sourceFiles": [
+    "PALETTE-FIELD-GUIDE.md",
+    "ABOUT.md",
+    "context.md",
+    "app.js",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "adaptation": "COLOR-PRINCIPLES.md",
+  "decisionTemplate": "docs/color-decision-template.md",
+  "notice": "THIRD_PARTY_NOTICES.md",
+  "vendorsColorData": false
+}

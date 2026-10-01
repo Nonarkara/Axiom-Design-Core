@@ -23,4 +23,4 @@ jobs:
       - run: node packages/audit/bin/axiom-audit.mjs . --strict
 
       # Front bans, back bans, the seam, the exit contract, the waiver rule.
-      - run: node --test packages/audit/test/audit.test.mjs
+      - run: node --test packages/audit/test/*.test.mjs

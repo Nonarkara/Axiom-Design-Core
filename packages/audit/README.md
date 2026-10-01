@@ -69,3 +69,29 @@ npx axiom-audit ./apps/web --strict
 # Machine-readable output
 npx axiom-audit . --json | jq '.errors'
 ```
+
+
+## Color contract and limits
+
+[COLOR-PRINCIPLES.md](../../COLOR-PRINCIPLES.md) is the canonical Palette-derived
+method; `docs/palette-source.json` pins its reviewed upstream revision. The seam
+checks named opaque `tokens.css` pairs on paper/panel and the actual paper
+foreground on blue/red/ink, including supported button state pairs. All small
+text, including 9px meta labels, must reach 4.5:1. It never substitutes pure white
+for warm paper in that calculation.
+
+This is a static guard, not a full rendered accessibility audit. It does not
+resolve arbitrary CSS cascades, opacity, overlays, images or every interactive
+state. Missing tokens are skipped; a project without `tokens.css` has no token
+contrast coverage. Inspect actual browser pairs and complete the color decision
+and release gates separately.
+
+From the repository root, run all audit and color-adoption regression tests:
+
+```bash
+node --test packages/audit/test/*.test.mjs
+```
+
+The added color tests check the source pin/adoption paths, documented examples,
+small-text floor, TypeScript parity and known unsafe trunk combinations. CI runs
+these tests alongside the existing strict audit.

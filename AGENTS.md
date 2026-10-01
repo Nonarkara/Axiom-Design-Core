@@ -24,8 +24,8 @@ and the front half never reads is worse than no header, because the next reader
 assumes it works.
 
 Verify with `npx axiom-audit . --strict` before claiming done. It audits front
-bans, back bans and the seam in one pass, computes every `tokens.css` contrast
-pair against `§19` instead of trusting the prose, and exits 2 on errors.
+bans, back bans and the seam in one pass, computes named opaque `tokens.css` contrast
+pairs against `§19` instead of trusting the prose, and exits 2 on errors.
 
 ## 1. The Equation
 
@@ -68,6 +68,14 @@ None of these?                        → no color. Grey + size.
 
 If you add color "to liven it up," you have failed every master. Delete it.
 
+**Required color method:** read [COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md).
+Judge the relationship across the viewport; remove hue; name token roles and
+area; measure actual rendered state pairs (including opacity); preserve visible
+non-color cues. Small labels need 4.5:1. Record the choice with
+[docs/color-decision-template.md](docs/color-decision-template.md). Palette’s
+exhibition shares are not dashboard quotas; Axiom’s identity remains unchanged.
+Retain the pinned source and exact plate URL/export when a plate is used.
+
 ---
 
 ## 4. The Spines — 4 habits that make every surface look Axiom
@@ -96,7 +104,7 @@ Direct. True. Economical — cut every word that carries no freight, as if you p
 - Gradients, drop shadows, glows, blurs, glassmorphism
 - Rounded corners (0–2 px; Sato mercy-radius only in Play mode)
 - More than one free accent (one blue identity, one red Move)
-- Pure `#000` or pure `#fff`
+- Pure-black ink or pure-white page ground; `--panel` is the functional instrument-face/measured-glyph exception (DNA §5.1)
 - Emoji, stock imagery, decorative icons
 - Font weights 700+ on data
 - Centering dense content
@@ -140,7 +148,8 @@ The bans above catch decoration. These catch **provenance** — what makes a str
 □ LINED GLASS: is state read instantly, never measured? Feedback under 100 ms?
 □ COLOR: grey for normal, blue for identity (enclosed), red for the one exception (bare)?
 □ VOICE: direct, true, economical, unpretentious — and still alive?
-□ LEGIBILITY: contrast passes? Not signaling by color alone?
+□ LEGIBILITY: contrast passes on actual backgrounds/states? Not signaling by color alone?
+□ PALETTE GATE: COLOR-PRINCIPLES.md release acceptance and decision record complete; untested browser/human gates reported?
 □ INEVITABILITY: could the user imagine no rational alternative?
 □ DESIGN READ: one sentence in context.md, specific to this surface — not reusable on any other?
 □ REFERENCE: a named real artifact (Braun ET66, the 1972 Vignelli diagram, moma.org), not an adjective?
@@ -161,6 +170,10 @@ The bans above catch decoration. These catch **provenance** — what makes a str
 | `USAGE.md` | Install steps for each agent type (Cursor, Cline, Aider, GPT, etc.). |
 | `AXIOM-DNA.md` | Full operating standard, 22 sections, every rule, every code example. |
 | `README.md` | Human overview, philosophy, lineage, mode selection, quick-start tokens. |
+| `COLOR-PRINCIPLES.md` | Required Palette-derived color decision method, adapted to Axiom. |
+| `docs/color-decision-template.md` | Copyable project decision/evidence record. |
+| `docs/palette-source.json` | Reviewed upstream revision and adaptation paths. |
+| `THIRD_PARTY_NOTICES.md` | Palette attribution and reuse boundaries. |
 | `tokens.css` | Drop-in CSS variables. |
 | `components.html` | Live component gallery. Open in a browser. |
 | `quick-start.html` | Minimal page template. Clone and edit. |
@@ -173,7 +186,9 @@ The bans above catch decoration. These catch **provenance** — what makes a str
 
 **One-shot (any agent):** clone it into your project, point the agent at `AGENTS.md`.
 
-**Persistent (project-wide):** copy `AGENTS.md` to your project root so the agent loads it on every session.
+**Persistent (project-wide):** keep the companion bundle in `USAGE.md` with
+`AGENTS.md` so the color method, template and notices survive installation.
+Do not copy this entry point alone and leave its required references behind.
 
 **Per-agent integration:** see [`USAGE.md`](USAGE.md) for the exact command for Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot.
 
@@ -183,7 +198,7 @@ The bans above catch decoration. These catch **provenance** — what makes a str
 
 | Question | Read |
 |---|---|
-| How do I pick a color? | `AXIOM-DNA.md` §5 (Color System) |
+| How do I pick a color? | `AXIOM-DNA.md` §5 + `COLOR-PRINCIPLES.md` |
 | What's the Divine Move? | `AXIOM-DNA.md` §14 (The Divine Move — Doctrine of the One Bold Gesture) |
 | How do I write Axiom copy? | `AXIOM-DNA.md` §15 (Voice & Language) |
 | How do I lay out a dashboard? | `AXIOM-DNA.md` §8 (MoMA Law) + `components.html` |

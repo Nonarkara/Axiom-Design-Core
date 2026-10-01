@@ -6,6 +6,22 @@ React 19 + TypeScript components for [Axiom Design Core](https://github.com/Nona
 
 The philosophy lives in [`AXIOM-DNA.md`](../../AXIOM-DNA.md) at the repo root. This package gives you the **operational layer** — copy-paste components and tokens that snap to the bans, the modes, and the color law.
 
+## Required color decision
+
+Read [COLOR-PRINCIPLES.md](../../COLOR-PRINCIPLES.md) alongside the DNA before
+using or overriding these tokens. Complete the
+[decision record](../../docs/color-decision-template.md): full viewport,
+grayscale value, token roles/area, exact rendered state pairs, visible non-color
+cues and source provenance. Palette’s exhibition shares are not dashboard
+quotas. `tokens.ink3` matches CSS at `#737069`; small labels need 4.5:1.
+
+These package files implement the system; they do not bundle the complete
+rulebook. Package-only consumers should retain a source checkout of
+[Nonarkara/Axiom-Design-Core](https://github.com/Nonarkara/Axiom-Design-Core)
+and follow its `USAGE.md` companion instructions. The relative document links
+above resolve in that checkout. A component unit-test pass does not prove the
+consuming app’s colors, opacity, states or accessibility.
+
 ## Install
 
 ```bash
@@ -103,7 +119,7 @@ tokens.trunk    // closed 8-color NYCTA palette
 - Gradients, drop shadows, glows, blurs, glassmorphism
 - Rounded corners (0–2px only; 2px is the max, default is 0)
 - More than one free accent (one blue, one red)
-- Pure `#000` or pure `#fff`
+- Pure-black ink or pure-white page ground; `--panel` instrument faces and measured trunk glyphs are the explicit DNA §5.1 exception
 - Emoji, decorative icons, stock imagery
 - Font weights 700+ on data
 - Centering dense content

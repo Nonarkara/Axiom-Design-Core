@@ -128,6 +128,20 @@ The manga banner at the top of this README is the civic-studio frame: a person b
 
 ---
 
+## Color is a relationship
+
+[COLOR-PRINCIPLES.md](COLOR-PRINCIPLES.md) is required alongside the DNA. It
+adapts [Palette](https://github.com/Nonarkara/palette) at a reviewed, pinned
+revision: inspect a full viewport, remove hue, name each token’s role and area,
+measure exact rendered contrast, and keep meaning readable without color.
+Axiom keeps its warm ground, enclosed blue identity and rare bare red exception.
+Palette’s exhibition proportions do not become dashboard color quotas.
+
+Use the [decision template](docs/color-decision-template.md) in your project’s
+`context.md`. [Source pin](docs/palette-source.json),
+[attribution](THIRD_PARTY_NOTICES.md), tested token examples, and separate
+automated/browser/human release gates travel with the method.
+
 ## Ethical use
 
 This work is for **civic decision-making**: city operations, transit, flood watch, campus intelligence, open indices, public briefings. The point is a faster, more honest decision — with a human still in the loop.
@@ -223,7 +237,7 @@ git clone https://github.com/Nonarkara/Axiom-Design-Core.git design-core
 
 Then tell the agent:
 
-> Read `design-core/AGENTS.md` and apply the Axiom design system. Use `design-core/tokens.css` for color and typography. Reference `design-core/components.html` — do not invent variants.
+> Read `design-core/AGENTS.md` and `design-core/COLOR-PRINCIPLES.md`, complete the color decision record, and apply the Axiom design system. Use `design-core/tokens.css` for color and typography. Reference `design-core/components.html` — do not invent variants.
 
 ### Drop the tokens into HTML
 
@@ -239,7 +253,7 @@ Core tokens (the rest, including motion curves, live in the file):
   --panel: #ffffff;   /* cells, instrument faces */
   --ink: #191712;     /* primary text */
   --ink-2: #6f6c63;   /* secondary text */
-  --ink-3: #918e84;   /* labels, meta */
+  --ink-3: #737069;   /* labels, meta */
   --line: #e7e5dd;    /* hairlines, gaps */
   --line-2: #d2cfc5;  /* stronger borders */
   --blue: #26243F;    /* the law — identity, enclosed */
@@ -263,7 +277,7 @@ The philosophy in [`AGENTS.md`](AGENTS.md) and [`AXIOM-DNA.md`](AXIOM-DNA.md) is
 
 ### Persistent install
 
-Copy [`AGENTS.md`](AGENTS.md) to the project root so the agent loads it every session. Per-agent paths (Claude Code, Cursor, Cline, Continue, Aider, Windsurf, Copilot): [`USAGE.md`](USAGE.md).
+Install [`AGENTS.md`](AGENTS.md) with its required color principles, template and notices using the companion bundle in [`USAGE.md`](USAGE.md). Per-agent paths (Claude Code, Cursor, Cline, Continue, Aider, Windsurf, Copilot): [`USAGE.md`](USAGE.md).
 
 ### Verify the install
 
@@ -284,13 +298,19 @@ MIT lets you use, copy, modify, and ship. Civic-studio forks still have to be ho
 5. When a rule in a short file conflicts with [`AXIOM-DNA.md`](AXIOM-DNA.md), the DNA wins — then subtract again.
 6. Run the [`AGENTS.md`](AGENTS.md) §7 checklist before declaring a surface done. One Divine Move per surface. Trace it to a function or delete it.
 
-Agent path in short: read `AGENTS.md` → pick the mode → import `tokens.css` → reference `components.html` → checklist → ship.
+Agent path in short: read `AGENTS.md` → pick the mode → complete the
+`COLOR-PRINCIPLES.md` decision record → import `tokens.css` → reference
+`components.html` → automated checks + viewport/grayscale/state/task gates → ship.
 
 ---
 
 ## License
 
 This project is licensed under the **MIT License**. Copyright © 2026 **Non Arkaraprasertkul / Axiom X Co., Ltd.** See [`LICENSE`](LICENSE).
+
+Palette-derived guidance retains its upstream MIT notice in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); no historical color dataset is
+vendored here.
 
 The MIT grant covers original work in this repository. It does not license Dieter Rams's ten principles, the 1970 NYCTA Graphics Standards Manual, Xiaohei illustrations (Ian Neo — separate repo, separate terms), or third-party type (Source Sans 3, Spectral — their own licenses). Quote the lineage; do not ship the marks as if they were yours.
 

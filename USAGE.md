@@ -25,7 +25,7 @@ cd <your-project>
 
 Then tell your agent:
 
-> "Read `design-core/AGENTS.md` and apply the Axiom design system. Use `design-core/tokens.css` for color/typography."
+> "Read `design-core/AGENTS.md` and `design-core/COLOR-PRINCIPLES.md`. Complete the color decision record in `context.md`, then apply the Axiom design system using `design-core/tokens.css`."
 
 The agent reads `AGENTS.md` for the spine, then `AXIOM-DNA.md` for depth as needed.
 
@@ -33,17 +33,30 @@ The agent reads `AGENTS.md` for the spine, then `AXIOM-DNA.md` for depth as need
 
 ## 2. Persistent (project-wide) — every session loads it
 
-Copy `AGENTS.md` (and optionally `tokens.css`) into your project root:
+Keep the checkout as `design-core/` when possible and point your existing agent
+instructions at it. If copying files, install the whole required companion
+bundle; do not leave `COLOR-PRINCIPLES.md` or its provenance behind. Merge with
+existing agent instructions rather than overwriting project rules.
+
+From the target project:
 
 ```bash
-git clone https://github.com/Nonarkara/Axiom-Design-Core.git /tmp/axiom-dc
-cp /tmp/axiom-dc/AGENTS.md ./AGENTS.md
-cp /tmp/axiom-dc/tokens.css ./design-core.css
-# Optional: add a .gitignore'd or vendored link to the full DNA doc
-cp -r /tmp/axiom-dc/AXIOM-DNA.md ./design-core/
+git clone https://github.com/Nonarkara/Axiom-Design-Core.git design-core
+# Merge this reference into your existing root AGENTS.md:
+# Read design-core/AGENTS.md and design-core/COLOR-PRINCIPLES.md before design.
+# Use design-core/docs/color-decision-template.md for the project record.
 ```
 
-The agent will load `AGENTS.md` automatically on every session in this project.
+The root entry point now routes to the retained checkout, where relative links
+resolve. Do not overwrite the project’s own license or existing instructions.
+For a copied bundle instead of a checkout, keep `AGENTS.md`, `CLAUDE.md`,
+`BUILDER.md`, `ANTI-TEMPLATE.md`, `AXIOM-DNA.md`, `AXIOM-SPINE.md`,
+`COLOR-PRINCIPLES.md`, `THIRD_PARTY_NOTICES.md`, `LICENSE`, `tokens.css`,
+`components.html` and `quick-start.html` together under `design-core/`, with
+`docs/color-decision-template.md` and `docs/palette-source.json` below it.
+Preserve the source license there; it does not replace your project’s license.
+The full checkout is preferred: the minimal bundle does not carry all gallery
+assets, research links or runnable package checks.
 
 ---
 
@@ -54,6 +67,12 @@ Use the per-agent patterns below. The global pattern keeps your project's root c
 ---
 
 ## Per-agent install
+
+All copied/symlinked entry-point examples below require the companion bundle
+from §2 at the target, or explicit paths to the retained checkout. For global
+rules and pasted prompts, provide `COLOR-PRINCIPLES.md` and the decision template
+as project knowledge too, or tell the agent their actual accessible paths. A
+short instruction file alone must not bypass the color gate.
 
 ### Claude Code
 
@@ -111,7 +130,7 @@ cp /tmp/axiom-dc/AGENTS.md ./AGENTS.md
 
 Aider reads `AGENTS.md` (via conventions) or you can pass it as `--read`:
 ```bash
-aider --read /tmp/axiom-dc/AGENTS.md --read /tmp/axiom-dc/AXIOM-DNA.md
+aider --read /tmp/axiom-dc/AGENTS.md --read /tmp/axiom-dc/AXIOM-DNA.md --read /tmp/axiom-dc/COLOR-PRINCIPLES.md
 # Or persist:
 cp /tmp/axiom-dc/AGENTS.md .aider.AGENTS.md
 ```
@@ -148,6 +167,12 @@ After installing, ask your agent:
 A correct install returns:
 > "Is it DATA (live / critical / down) → bare red. Is it IDENTITY → enclosed blue. Is it DIRECTIONAL → greyscale triangle. None of these → no color, grey + size."
 
+Also ask it to name the five color gates and locate the decision template and
+source pin. It should return viewport, grayscale value, roles/area, exact
+rendered contrast and non-color meaning; Palette shares are not universal
+dashboard quotas. If it cannot locate `COLOR-PRINCIPLES.md`, the companion
+installation is incomplete.
+
 If the agent instead says "I should use color to liven it up," the install is broken — `AGENTS.md` is not being loaded.
 
 ---
@@ -159,7 +184,10 @@ cd /path/to/Axiom-Design-Core
 git pull
 ```
 
-If you copied `AGENTS.md` into your project, re-copy after the pull.
+If you copied the guidance into your project, update the full companion bundle
+after review, including `COLOR-PRINCIPLES.md`, its template, source pin and
+notices. Keep project-specific decision evidence intact. Palette upgrades are
+intentional source reviews, not automatic pulls from its `main`.
 
 If you symlinked, the symlink resolves on every load — no re-copy needed.
 
