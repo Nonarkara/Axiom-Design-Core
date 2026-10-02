@@ -1,5 +1,9 @@
 # CLAUDE.md — Claude Code quick-start
 
+For type decisions, read [TYPOGRAPHY.md](TYPOGRAPHY.md) and
+[the portable skill](skills/bringhurst-contextual-type/SKILL.md).
+Keep house mode/token laws; proof actual text before requesting exceptions.
+
 > You are Claude Code. This file is loaded automatically when you `cd` into the Axiom Design Core directory, or when the file is symlinked into a project's `.claude/` or root.
 
 > **Read [`BUILDER.md`](BUILDER.md) first.** That file is the method — how the work gets

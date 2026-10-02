@@ -260,6 +260,10 @@ Focus = a 1px border darken (`--line-2` → `--ink`, or → `--blue`). No glow, 
 
 ## 6. TYPOGRAPHY
 
+Before selecting or changing type, read [TYPOGRAPHY.md](TYPOGRAPHY.md).
+It adds content/medium/script proof to the existing mode and token laws below;
+it does not authorise a new family or relax §21's constraints.
+
 ### 6.1 Families
 
 **Instrument / UI — Source Sans 3** (neo-grotesque, Helvetica lineage; free, runs everywhere including PowerPoint, Gamma, email, print. Inter was here until 2026-09-08 — see §13.5.)
@@ -653,9 +657,9 @@ Editorial and Play modes may spend **one** entrance per surface under the ordina
 
 ### 13.5 The templated-ness risk — read this before you copy this file again
 
-Independent AI-slop audits (impeccable's detector, run against thousands of generated interfaces) flag **warm cream/beige page grounds** and **Inter** as recognizable tells of AI-generated design — not because either choice is wrong on its own, but because so many systems reached for the same "safe, tasteful" default that the default became the tell.
+Anti-template critiques flag **warm cream/beige page grounds** and **Inter** as recurring defaults worth examining. These are prompts to inspect context and composition, not reliable evidence of AI authorship. Familiarity alone does not make a face unsuitable.
 
-**This system was one of them.** `--font-sans` was `'Inter'` until 2026-09-08 — Axiom's `--paper: #f6f5f2` plus Inter is exactly the palette-and-face pair those audits name. Inter's practical case (runs everywhere, including PowerPoint and email) was real. It was not enough: a face this widely cited stops signaling "chosen" the instant it signals "generated," and the load-bearing reason does not survive contact with that fact. `--font-sans` is now `'Source Sans 3'`.
+**This system revised that default.** `--font-sans` was `'Inter'` until 2026-09-08; it is now `'Source Sans 3'`. This remains Axiom's house identity decision, not a universal claim that Inter reveals generated work. A type choice earns its role through real content, rendering and the reader's task. [TYPOGRAPHY.md](TYPOGRAPHY.md) supplies that proof layer without changing the approved family.
 
 The full tell registry — colour, provenance (View-Source, not just screenshot), layout reflexes, copy — is `ANTI-TEMPLATE.md`, and it is the canonical treatment now; this section stays scoped to what is specific to motion. The cream ground stays, named as an open tension rather than resolved by fiat — swapping it for novelty would be the same failure in the other direction (`ANTI-TEMPLATE.md §3`). What actually differentiates a surface that obeys every rule in this file:
 

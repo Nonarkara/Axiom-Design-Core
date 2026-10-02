@@ -1,5 +1,9 @@
 # Agent Quick-Start — Axiom Design Core
 
+For type decisions, read [TYPOGRAPHY.md](TYPOGRAPHY.md) and
+[the portable skill](skills/bringhurst-contextual-type/SKILL.md).
+Keep house mode/token laws; proof actual text before requesting exceptions.
+
 > If you are an AI agent (Claude Code, Cursor, Cline, Continue, Aider, Windsurf, GPT, Copilot, or any other), read this file first. The full operating standard is in [`AXIOM-DNA.md`](AXIOM-DNA.md).
 
 This file is the **5-line spine**. Drop it into any agent's context, ask for any artifact (dashboard, slide, infographic, document, game, narrative, slide-deck, email), and produce something that looks Axiom-correct on the first pass.

@@ -7,6 +7,9 @@ The floating HUD, palettes, type samples, spacing ladder, radius chips, and comp
 
 # Axiom Design Core
 
+[Context before type](TYPOGRAPHY.md): Bringhurst-inspired selection and proof,
+applied to Axiom's existing Instrument / Editorial / Play roles.
+
 **The living design system for Axiom — decision systems for cities, governments, and operators.**
 
 [axiom.nonarkara.org](https://axiom.nonarkara.org) · Bangkok · **Axiom X Co., Ltd.** · [Nonarkara/Axiom-Design-Core](https://github.com/Nonarkara/Axiom-Design-Core)
