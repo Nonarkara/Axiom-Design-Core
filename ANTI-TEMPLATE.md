@@ -3,6 +3,8 @@
 > Added 2026-09-08. The bans in `AGENTS.md` §6 catch decoration. This file catches **provenance** — the cluster of defaults that lets a stranger identify a surface as agent-built from a screenshot or a View-Source.
 >
 > Enforced by `npx axiom-audit . --strict`. The prose here is the reasoning; the audit is the gate.
+>
+> Field evidence: [`docs/design-slop-field-guide.md`](docs/design-slop-field-guide.md) — 18 slop patterns observed across 44 AI-assisted flood apps (4 Oct 2026), each with a test.
 
 ---
 
