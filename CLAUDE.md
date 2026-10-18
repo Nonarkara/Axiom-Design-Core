@@ -1,3 +1,5 @@
+> **Read [ANTI-SLOP.md](ANTI-SLOP.md) before any design or frontend work.** These are Dr Non's hard rules against AI design slop: empty space is a decision, subtract before you add, and the map comes first. Check pages with `slop-lint` (tools/slop-lint.mjs in Nonarkara/palette).
+
 # CLAUDE.md — Claude Code quick-start
 
 For type decisions, read [TYPOGRAPHY.md](TYPOGRAPHY.md) and
